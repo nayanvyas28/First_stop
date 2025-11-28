@@ -1,0 +1,33 @@
+{
+  "name": "car-web",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000F\u0000i\u0000r\u0000s\u0000t\u0000_\u0000s\u0000t\u0000o\u0000p\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    
+  "build:html": "html-minifier-terser src/*.html -o build/index.html",
+  "build:css": "cleancss -o build/style.css src/style.css",
+  "build:js": "terser src/script.js -o build/script.js",
+  "build": "npm run build:html && npm run build:css && npm run build:js"
+}
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nayanvyas28/First_stop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nayanvyas28/First_stop/issues"
+  },
+  "homepage": "https://github.com/nayanvyas28/First_stop#readme",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.44.1"
+  }
+}
