@@ -18,7 +18,7 @@
 
 
 var locations=[
-    [locationData('images/resource/map-card.jpg', 'job-single-v1.html', "Audi, Q5", '26,786 kms', 'Petrol', 'Automatic' ), 40.94401669296697, -74.16938781738281, 1, '<div style="background-image: url(images/resource/map-card.jpg);"></div>'],
+    [locationData('images/resource/map-card.jpg', 'job-single-v1.html', "Audi, Q5", '26,786 kms', 'Gasoline', 'Automatic' ), 40.94401669296697, -74.16938781738281, 1, '<div style="background-image: url(images/resource/map-card.jpg);"></div>'],
     [locationData('images/resource/map-card.jpg', 'job-single-v1.html', "Audi, Q5", 'Segment', 'London, UK', ), 40.77055783505125, -74.26002502441406, 2, '<div style="background-image: url(images/resource/map-card.jpg);"></div>'], 
     [locationData('images/resource/map-card.jpg', 'job-single-v1.html', "Audi, Q5", 'Segment', 'London, UK', ), 40.7427837, -73.11445617675781, 3, '<div style="background-image: url(images/resource/map-card.jpg);"></div>'], 
     [locationData('images/resource/map-card.jpg', 'job-single-v1.html', "Audi, Q5", 'Segment', 'London, UK', ), 40.70437865245596, -73.98674011230469, 4, '<div style="background-image: url(images/resource/map-card.jpg);"></div>'], 
