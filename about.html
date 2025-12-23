@@ -23,61 +23,46 @@
     .boxcar-header .c-box {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 100%;
     }
 
-    .boxcar-header .nav-out-bar {
-        flex: 0.65;
+    .boxcar-header .st-logo {
+        flex: 0 0 auto;
         display: flex;
         justify-content: flex-start;
     }
 
-    .boxcar-header .st-logo {
+    .boxcar-header .st-logo img {
+        max-width: 180px;
+        height: auto;
+    }
+
+    .boxcar-header .nav-out-bar {
         flex: 1;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     .boxcar-header .right-box {
-        flex: 1;
         display: flex;
         justify-content: flex-end;
         align-items: center;
     }
 
-    .layout-search {
-        position: relative;
-        display: flex;
-        align-items: center;
+    @media (max-width: 1199px) {
+        .boxcar-header .st-logo img {
+            max-width: 140px;
+        }
+        .boxcar-header .nav-out-bar {
+            display: none;
+        }
     }
 
-    .layout-search .search-box {
-        display: flex;
-        align-items: center;
-        padding: 8px 16px;
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(8px);
-    }
-
-    .layout-search .search-box svg.icon {
-        margin-right: 8px;
-    }
-
-    .layout-search .search-box input {
-        border: none;
-        background: transparent;
-        outline: none;
-        color: white;
-        font-size: 15px;
-        width: 200px;
-    }
-
-    .box-content-search {
-        position: absolute;
-        top: 50px;
-        right: 0;
-        width: 320px;
+    @media (max-width: 767px) {
+        .boxcar-header .st-logo img {
+            max-width: 120px;
+        }
     }
 </style>
 <body>
@@ -89,6 +74,13 @@
                 <div class="inner-container">
                     <!-- Main box -->
                     <div class="c-box">
+                        <!-- Logo -->
+                        <div style="margin-left: 5%;" class="logo st-logo">
+                            <a href="index.html">
+                                <img src="images/logo.svg" alt="" title="FIRST STOP MOTORS">
+                            </a>
+                        </div>
+
                         <!--Nav Box-->
                         <div class="nav-out-bar">
                             <nav class="nav main-menu">
@@ -96,95 +88,16 @@
                                     <li><a href="index.html"><span>Home</span></a></li>
                                     <li><a href="about.html"><span>About</span></a></li>
                                     <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                    <li><a href="trade-in.html"><span>Trade-In</span></a></li>
                                     <li><a href="contact.html"><span>Contact</span></a></li>
                                 </ul>
                             </nav>
                         </div>
 
-                        <!-- Main Menu End-->
-                        <div class="logo st-logo">
-                            <div class="logo st-logo" style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                                <a href="index-2.html" style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                                    <img src="images/logo.svg" alt="" title="FIRST STOP MOTORS" style="display: block; margin: 0 auto;">
-                                </a>
-                            </div>
-                        </div>
+                        <!-- Mobile Menu -->
                         <div class="right-box">
-                            <div class="layout-search">
-                                <div class="search-box">
-                                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.29301 1.2876C3.9872 1.2876 1.29431 3.98048 1.29431 7.28631C1.29431 10.5921 3.9872 13.2902 7.29301 13.2902C8.70502 13.2902 10.0036 12.7954 11.03 11.9738L13.5287 14.4712C13.6548 14.5921 13.8232 14.6588 13.9979 14.657C14.1725 14.6552 14.3395 14.5851 14.4631 14.4617C14.5867 14.3382 14.6571 14.1713 14.6591 13.9967C14.6611 13.822 14.5947 13.6535 14.474 13.5272L11.9753 11.0285C12.7976 10.0006 13.293 8.69995 13.293 7.28631C13.293 3.98048 10.5988 1.2876 7.29301 1.2876ZM7.29301 2.62095C9.87824 2.62095 11.9584 4.70108 11.9584 7.28631C11.9584 9.87153 9.87824 11.9569 7.29301 11.9569C4.70778 11.9569 2.62764 9.87153 2.62764 7.28631C2.62764 4.70108 4.70778 2.62095 7.29301 2.62095Z"
-                                            fill="white" />
-                                    </svg>
-                                    <input type="search" placeholder="Search" class="show-search" name="name"
-                                        tabindex="2" value="" aria-required="true" required="">
-
-                                </div>
-                                <div class="box-content-search" id="box-content-search">
-                                    <ul class="box-car-search">
-                                        <li><a href="inventory-page-single.html" class="car-search-item">
-                                                <div class="box-img">
-                                                    <img src="images/resource/car-search.jpg" alt="img">
-                                                </div>
-                                                <div class="info">
-                                                    <p class="name">Audi, Q5 - 2023 C300e AMG Line Night Ed Premium Plus
-                                                        5dr 9G-Tronic</p>
-                                                    <span class="price">$399</span>
-                                                </div>
-                                            </a></li>
-                                        <li><a href="inventory-page-single.html" class="car-search-item">
-                                                <div class="box-img">
-                                                    <img src="images/resource/car-search.jpg" alt="img">
-                                                </div>
-                                                <div class="info">
-                                                    <p class="name">Audi, Q5 - 2023 C300e AMG Line Night Ed Premium Plus
-                                                        5dr 9G-Tronic</p>
-                                                    <span class="price">$399</span>
-                                                </div>
-                                            </a></li>
-                                        <li><a href="inventory-page-single.html" class="car-search-item">
-                                                <div class="box-img">
-                                                    <img src="images/resource/car-search.jpg" alt="img">
-                                                </div>
-                                                <div class="info">
-                                                    <p class="name">Audi, Q5 - 2023 C300e AMG Line Night Ed Premium Plus
-                                                        5dr 9G-Tronic</p>
-                                                    <span class="price">$399</span>
-                                                </div>
-                                            </a></li>
-                                        <li><a href="inventory-page-single.html" class="car-search-item">
-                                                <div class="box-img">
-                                                    <img src="images/resource/car-search.jpg" alt="img">
-                                                </div>
-                                                <div class="info">
-                                                    <p class="name">Audi, Q5 - 2023 C300e AMG Line Night Ed Premium Plus
-                                                        5dr 9G-Tronic</p>
-                                                    <span class="price">$399</span>
-                                                </div>
-                                            </a></li>
-                                    </ul>
-                                    <a href="inventory-page-single.html" class="btn-view-search">
-                                        View Details
-                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_3114_6864)">
-                                                <path
-                                                    d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                    fill="#405FF2" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_3114_6864">
-                                                    <rect width="14" height="14" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
                             <div class="mobile-navigation">
-                                <a href="index-9.html#nav-mobile" title="">
+                                <a href="#nav-mobile" title="">
                                     <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <rect width="22" height="2" fill="white" />
@@ -225,8 +138,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="boxcar-title">
                             <ul class="breadcrumb">
-                                <li><a href="about.html#">Home</a></li>
-                                <li><span>Cars for Sale</span></li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><span>About Us</span></li>
                             </ul>
                             <h2>About Us</h2>
                             <div class="text">We Value Our Customers
@@ -589,13 +502,13 @@
         <!-- End brand section -->
 
         <!-- boxcar-team-section -->
-        <div class="boxcar-team-section-two pt-0">
+        <!-- <div class="boxcar-team-section-two pt-0">
             <div class="boxcar-container">
                 <div class="boxcar-title wow fadeInUp">
                     <h2>Our Team</h2>
                 </div>
                 <div class="row">
-                    <!-- team-block -->
+                    team-block 
                     <div class="team-block-two col-lg-3 col-md-6 col-sm-6">
                         <div class="inner-box wow fadeInUp">
                             <div class="image-box">
@@ -612,7 +525,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- team-block -->
+                    <!-- team-block 
                     <div class="team-block-two col-lg-3 col-md-6 col-sm-6">
                         <div class="inner-box wow fadeInUp" data-wow-delay="100ms">
                             <div class="image-box">
@@ -629,7 +542,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- team-block -->
+                     team-block 
                     <div class="team-block-two col-lg-3 col-md-6 col-sm-6">
                         <div class="inner-box wow fadeInUp" data-wow-delay="200ms">
                             <div class="image-box">
@@ -646,7 +559,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- team-block -->
+                
                     <div class="team-block-two col-lg-3 col-md-6 col-sm-6">
                         <div class="inner-box wow fadeInUp" data-wow-delay="300ms">
                             <div class="image-box">
@@ -666,6 +579,7 @@
                 </div>
             </div>
         </div>
+        </div> -->
         <!-- End boxcar-team-section -->
 
         <!-- boxcar-testimonial-section-four -->
@@ -704,7 +618,7 @@
                                 <div class="auther-info">
                                     <figure class="image"><a href="about.html#"><img
                                                 src="images/resource/test-auther-2.jpg" alt=""></a></figure>
-                                    <h6 class="name">Floyd Miles</h6>
+                                    <h6 class="name">Floyd KM</h6>
                                     <span>Bank of America</span>
                                 </div>
                             </div>
@@ -752,7 +666,7 @@
                                 <div class="auther-info">
                                     <figure class="image"><a href="about.html#"><img
                                                 src="images/resource/test-auther-2.jpg" alt=""></a></figure>
-                                    <h6 class="name">Floyd Miles</h6>
+                                    <h6 class="name">Floyd KM</h6>
                                     <span>Bank of America</span>
                                 </div>
                             </div>
@@ -959,35 +873,119 @@
     <!-- End about-inner-one -->
 
     <!-- main footer -->
-    <footer class="boxcar-footer footer-style-one v1 cus-st-1">
-        <!-- main footer -->
-        <footer class="boxcar-footer footer-style-one">
+        <footer class="boxcar-footer footer-style-one v1 cus-st-1">
+            <div class="footer-top">
+                <div class="boxcar-container">
+                    <div class="right-box">
+                        <div class="top-left wow fadeInUp">
+                            <!-- <h6 class="title">Join FIRST STOP MOTORS</h6>
+                            <div class="text">Receive pricing updates, shopping tips & more!</div> -->
+                        </div>
+                        <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
+                            <form method="post" action="contact.html#">
+                                <!-- <div class="form-group">
+                                    <input type="email" name="email" class="email" value=""
+                                        placeholder="Your e-mail address" required="">
+                                    <button type="button" class="theme-btn btn-style-one hover-light"><span
+                                            class="btn-title">Sign Up</span></button>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="widgets-section">
                 <div class="boxcar-container">
                     <div class="row">
-                        <!-- Footer COlumn: Useful Links -->
-                        <div class="footer-column col-lg-6 col-md-6 col-sm-12">
-                            <div class="footer-widget links-widget wow fadeInUp">
-                                <h4 class="widget-title">Useful Links</h4>
-                                <div class="widget-content">
-                                    <ul class="user-links style-two">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
-                                    </ul>
+                        <!-- Footer COlumn -->
+                        <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget wow fadeInUp">
+                                        <h4 class="widget-title">Useful Links</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links style-two">
+                                                <li><a href="contact.html#">About Us</a></li>
+                                                <!-- <li><a href="contact.html#">Careers</a></li> -->
+                                                <!-- <li><a href="contact.html#">Blog</a></li> -->
+                                                <!-- <li><a href="contact.html#">FAQs</a></li> -->
+                                                <!-- <li><a href="contact.html#">Finance</a></li>    -->
+                                                <li><a href="contact.html#">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
+                                    <h4 class="widget-title">Quick Links</h4>
+                                    <div class="widget-content">
+                                        <ul class="user-links style-two">
+                                            <li><a href="contact.html#">Get in Touch</a></li>
+                                            <li><a href="contact.html#">Help center</a></li>
+                                            <li><a href="contact.html#">Live chat</a></li>
+                                            <li><a href="contact.html#">How it works</a></li>
+                                        </ul>                                
+                                    </div>
+                                </div> -->
+                                </div>
+                                <!-- <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="200ms">
+                                    <h4 class="widget-title">Our Brands</h4>
+                                    <div class="widget-content">
+                                        <ul class="user-links style-two">
+                                            <li><a href="contact.html#">Aston Martin</a></li>
+                                            <li><a href="contact.html#">Audi</a></li>
+                                            <li><a href="contact.html#">Bentley</a></li>
+                                            <li><a href="contact.html#">BMW</a></li>
+                                            <li><a href="contact.html#">Bugatti</a></li>
+                                            <li><a href="contact.html#">Ferrari</a></li>
+                                            <li><a href="contact.html#">Jaguar</a></li>
+                                            <li><a href="contact.html#">Lamborghini</a></li>
+                                        </ul>                                
+                                    </div>
+                                </div>
+                            </div> -->
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="300ms">
+                                    <h4 class="widget-title">Vehicles Type</h4>
+                                    <div class="widget-content">
+                                        <ul class="user-links style-two">
+                                            <li><a href="contact.html#">Pickup</a></li>
+                                            <li><a href="contact.html#">Coup</a></li>
+                                            <li><a href="contact.html#">Family MPV</a></li>
+                                            <li><a href="contact.html#">Sedan</a></li>
+                                            <li><a href="contact.html#">SUVs</a></li>
+                                            <li><a href="contact.html#">Sport Coupe</a></li>
+                                            <li><a href="contact.html#">Convertible</a></li>
+                                            <li><a href="contact.html#">Wagon</a></li>
+                                        </ul>
+                                    </div>
+                                </div> -->
                                 </div>
                             </div>
                         </div>
-                        <!-- Footer COlumn: Social Icons -->
-                        <div class="footer-column col-lg-6 col-md-6 col-sm-12">
-                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="100ms">
-                                <h4 class="widget-title">Connect With Us</h4>
+                        <!-- footer column -->
+                        <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="400ms">
+                                <!-- <h4 class="widget-title">Vehicles Type</h4> -->
                                 <div class="widget-content">
+                                    <!-- <a href="contact.html#" class="store">
+                                    <img src="images/resource/apple.png">
+                                    <span>Download on the</span>
+                                    <h6 class="title">Apple Store</h6>
+                                </a>
+                                <a href="contact.html#" class="store two">
+                                    <img src="images/resource/play.png">
+                                    <span>Get in on</span>
+                                    <h6 class="title">Google Play</h6>
+                                </a> -->
                                     <div class="social-icons">
+                                        <h6 class="title">Connect With Us</h6>
                                         <ul>
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="contact.html#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="contact.html#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="contact.html#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="contact.html#"><i class="fab fa-linkedin-in"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1000,10 +998,13 @@
             <div class="footer-bottom">
                 <div class="boxcar-container">
                     <div class="inner-container">
-                        <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
-                        <div class="developed-by wow fadeInUp" style="margin-top:10px;">
-                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener">BigInIT Technologies LLP</a>
-                        </div>
+                        <div class="copyright-text wow fadeInUp">© <a href="contact.html#">2024 FIRST STOP MOTORSs.com.
+                                All rights reserved.</a></div>
+
+                        <ul class="footer-nav wow fadeInUp" data-wow-delay="100ms">
+                            <li><a href="contact.html#">Terms & Conditions</a></li>
+                            <li><a href="contact.html#">Privacy Notice</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
