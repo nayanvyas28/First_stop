@@ -1,3 +1,5 @@
+/* Prevent overlap of title with sidebar filter */
+
 /* Boxcar | Boxcar HTML Template
 
 Template Name: Boxcar
@@ -6395,7 +6397,7 @@ Section Title
 
 ***/
 .boxcar-banner-section-nine {
-  background-image: url(../images/banner/banner-page9.jpg);
+  background-image: url("https://i.pinimg.com/1200x/f3/78/6d/f3786d6e52d006ab37102e1a8f59a71e.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

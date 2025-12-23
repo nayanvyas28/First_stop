@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FIRST STOP MOTORS | Trade-In</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link href="css/mmenu.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <style>
+        .boxcar-header .c-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .boxcar-header .st-logo {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .boxcar-header .st-logo img {
+            max-width: 180px;
+            height: auto;
+        }
+        .boxcar-header .nav-out-bar {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .boxcar-header .right-box {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        @media (max-width: 1199px) {
+            .boxcar-header .st-logo img {
+                max-width: 140px;
+            }
+            .boxcar-header .nav-out-bar {
+                display: none;
+            }
+        }
+        @media (max-width: 767px) {
+            .boxcar-header .st-logo img {
+                max-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="boxcar-wrapper">
+        <!-- Main Header-->
+        <header class="boxcar-header header-style-v1 style-two inner-header cus-style-1">
+            <div class="header-inner">
+                <div class="inner-container">
+                    <div class="c-box">
+                        <div style="margin-left: 5%;" class="logo st-logo">
+                            <a href="index.html">
+                                <img src="images/logo.svg" alt="" title="FIRST STOP MOTORS">
+                            </a>
+                        </div>
+                        <div class="nav-out-bar">
+                            <nav class="nav main-menu">
+                                <ul class="navigation" id="navbar">
+                                    <li><a href="index.html"><span>Home</span></a></li>
+                                    <li><a href="about.html"><span>About</span></a></li>
+                                    <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                    <li><a href="trade-in.html"><span>Trade-In</span></a></li>
+                                    <li><a href="contact.html"><span>Contact</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="right-box">
+                            <div class="mobile-navigation">
+                                <a href="#nav-mobile" title="">
+                                    <svg width="22" height="11" viewBox="0 0 22 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="22" height="2" fill="white" />
+                                        <rect y="9" width="22" height="2" fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-popup">
+                <span class="search-back-drop"></span>
+                <button class="close-search"><span class="fa fa-times"></span></button>
+                <div class="search-inner">
+                    <form method="post" action="#">
+                        <div class="form-group">
+                            <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="nav-mobile"></div>
+        </header>
+        <!-- End header-section -->
+        <!-- trade-in-section -->
+        <section class="contact-us-section layout-radius">
+            <div class="boxcar-container">
+                <div class="boxcar-title-three wow fadeInUp">
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>Trade-In</span></li>
+                    </ul>
+                    <h2>Trade-In Your Vehicle</h2>
+                </div>
+                <div class="calculater-sec">
+                    <div class="right-box">
+                        <div class="row">
+                            <div class="col-lg-6 content-column">
+                                <div class="inner-column">
+                                    <div class="boxcar-title">
+                                        <h2>Trade-In Form</h2>
+                                        <p>Fill out the form below to get a trade-in offer for your vehicle. Our team will contact you with a quote as soon as possible.</p>
+                                    </div>
+                                    <form class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form_boxes">
+                                                <label>Your Name</label>
+                                                <input type="text" name="name" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_boxes">
+                                                <label>Email</label>
+                                                <input type="email" name="email" placeholder="mail@example.com">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_boxes">
+                                                <label>Phone</label>
+                                                <input type="text" name="phone" placeholder="+1 (XXX) XXX-XXXX">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_boxes">
+                                                <label>Car Make</label>
+                                                <input type="text" name="car_make" placeholder="e.g. Toyota">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_boxes">
+                                                <label>Car Model</label>
+                                                <input type="text" name="car_model" placeholder="e.g. Camry">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form_boxes">
+                                                <label>Year</label>
+                                                <input type="text" name="car_year" placeholder="e.g. 2020">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form_boxes v2">
+                                                <label>Additional Details</label>
+                                                <textarea name="message" placeholder="Enter any additional details about your vehicle" style="color:#000; width: 100%;"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-submit">
+                                            <button type="submit" class="theme-btn">Submit Trade-In<img src="images/arrow.svg" alt=""></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="contact-column col-lg-6 col-md-12 col-sm-12">
+                                <div class="inner-column">
+                                    <div class="boxcar-title">
+                                        <h6 class="title">Contact details</h6>
+                                        <div class="text">Get in touch with First Stop Motors. We're here to help you find your perfect vehicle.</div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h6 class="title">Address</h6>
+                                        <div class="text">121 9th St N, Unit #2<br>Martensville S0K2T2</div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h6 class="title">Email</h6>
+                                        <div class="text"><a href="mailto:Firststopmotors306@gmail.com" style="color: inherit; text-decoration: none;">Firststopmotors306@gmail.com</a></div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h6 class="title">Phone</h6>
+                                        <div class="text"><a href="tel:+13062808015" style="color: inherit; text-decoration: none;">+1 306-280-8015</a></div>
+                                    </div>
+                                    <div class="social-icons">
+                                        <h6 class="title">Follow us</h6>
+                                        <ul class="social-links">
+                                            <li><a href="https://www.instagram.com/firststop.motors?igsh=MWxodWVzbWM5MWtwZw==" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                            <li><a href="https://maps.app.goo.gl/KC6R3z8C4bBt7qdG8?g_st=ic" target="_blank"><i class="fa-brands fa-google"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- main footer -->
+        <footer class="boxcar-footer footer-style-one v1 cus-st-1">
+            <div class="footer-top">
+                <div class="boxcar-container">
+                    <div class="right-box">
+                        <div class="top-left wow fadeInUp">
+                            <h6 class="title">Join FIRST STOP MOTORS</h6>
+                            <div class="text">Receive pricing updates, shopping tips & more!</div>
+                        </div>
+                        <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
+                            <form method="post" action="#">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="email" value="" placeholder="Your e-mail address" required="">
+                                    <button type="button" class="theme-btn btn-style-one hover-light"><span class="btn-title">Sign Up</span></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="social-icons">
+                            <h6 class="title">Connect With Us</h6>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="boxcar-container">
+                    <div class="inner-container">
+                        <div class="footer-hours wow fadeInUp" style="margin-bottom:10px; font-weight:bold;">Working Hours: 10am to 6pm</div>
+                        <div class="copyright-text wow fadeInUp">© <a href="#">2024 FIRST STOP MOTORSs.com.
+                                All rights reserved.</a></div>
+
+                        <ul class="footer-nav wow fadeInUp" data-wow-delay="100ms">
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Notice</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End boxcar-footer -->
+
+    </div><!-- End Page Wrapper -->
+
+    <!-- Scroll To Top -->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/slick-animation.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/mixitup.js"></script>
+    <script src="js/knob.js"></script>
+    <script src="js/mmenu.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
