@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>FIRST STOP MOTORSS</title>
+    <title>FIRST STOP MOTORS</title>
     <!-- Stylesheets -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
@@ -20,6 +20,84 @@
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 <style>
+            /* Hamburger styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            z-index: 1201;
+        }
+        .hamburger span {
+            height: 4px;
+            width: 100%;
+            background: #222;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1200;
+        }
+
+        /* Mobile nav menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80vw;
+            max-width: 320px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.08);
+            z-index: 1202;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+            padding: 40px 24px 24px 24px;
+        }
+        .mobile-nav.open {
+            display: block;
+            transform: translateX(0);
+        }
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-nav ul li {
+            margin-bottom: 24px;
+        }
+        .mobile-nav ul li:last-child {
+            margin-bottom: 0;
+        }
+        .mobile-nav ul li a {
+            color: #222;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .mobile-nav ul li a:hover {
+            color: #405FF2;
+        }
+
+        @media (max-width: 991px) {
+            .boxcar-header .nav-out-bar {
+                display: none !important;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
     .boxcar-header .c-box {
         display: flex;
         justify-content: space-between;
@@ -75,8 +153,7 @@
 
 <body>
 
-    <div class="boxcar-wrapper">
-
+    <!-- <div class="boxcar-wrapper"> -->
         <!-- Main Header-->
         <header class="boxcar-header header-style-v9">
             <div class="header-inner">
@@ -98,6 +175,11 @@
                                     <li><a href="contact.html"><span>Contact</span></a></li>
                                 </ul>
                             </nav>
+                        </div>
+                        <div class="hamburger" id="hamburger-menu" aria-label="Open navigation" tabindex="0">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                     <!-- Mobile Menu  -->
@@ -3398,5 +3480,38 @@
     <script src="js/mmenu.js"></script>
     <script src="js/main.js"></script>
 </body>
+
+<script>
+// Hamburger menu logic
+const hamburger = document.getElementById('hamburger-menu');
+const mobileNav = document.getElementById('mobile-nav');
+const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+const mobileNavLinks = mobileNav.querySelectorAll('a');
+
+function openMobileNav() {
+    mobileNav.classList.add('open');
+    mobileNavOverlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    mobileNavOverlay.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openMobileNav);
+hamburger.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') openMobileNav();
+});
+mobileNavOverlay.addEventListener('click', closeMobileNav);
+mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileNav();
+});
+// Optional: close on resize to desktop
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 991) closeMobileNav();
+});
+</script>
 
 </html>
