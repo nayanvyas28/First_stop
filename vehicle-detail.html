@@ -10,22 +10,113 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slick-theme.css">
     <style>
-        /* Custom styles for vehicle detail page */
+                        /* Improved Specifications section */
+                        .specifications-row {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 1.2rem 2.5rem;
+                            margin-bottom: 0.5rem;
+                        }
+                        .specification-item {
+                            background: #f4f6fa;
+                            border-radius: 10px;
+                            padding: 1rem 1.3rem;
+                            margin-bottom: 0.5rem;
+                            display: flex;
+                            align-items: center;
+                            min-width: 180px;
+                            flex: 1 1 220px;
+                            font-size: 1.08rem;
+                            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+                        }
+                        .specification-item .spec-icon {
+                            font-size: 1.4rem;
+                            color: #007bff;
+                            margin-right: 0.7rem;
+                        }
+                        @media (max-width: 991px) {
+                            .specifications-row { gap: 0.7rem 1.2rem; }
+                            .specification-item { padding: 0.7rem 0.7rem; font-size: 1rem; }
+                        }
+                        @media (max-width: 767px) {
+                            .specifications-row { flex-direction: column; gap: 0.5rem; }
+                            .specification-item { flex: 1 1 100%; min-width: 0; }
+                        }
+                /* Uniform thumbnail size for feature images and carousel dots */
+                .feature-item .img-thumbnail, .slick-dots img.img-thumbnail {
+                    width: 48px !important;
+                    height: 48px !important;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    margin-right: 0.7rem;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+                    display: inline-block;
+                }
+        /* Responsive vehicle detail page */
+        body {
+            background: #f7f8fa;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
         .vehicle-section { margin-bottom: 2.5rem; }
         .vehicle-card { border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); background: #fff; padding: 2.5rem 2rem; }
         .vehicle-card h2, .vehicle-card h4 { font-weight: 700; letter-spacing: 0.01em; }
         .spec-icon { font-size: 1.5rem; color: #007bff; margin-right: 0.5rem; vertical-align: middle; }
-        .feature-list { display: flex; flex-wrap: wrap; gap: 1.2rem; }
-        .feature-item { flex: 1 1 260px; display: flex; align-items: center; background: #f4f6fa; border-radius: 10px; padding: 0.85rem 1.2rem; margin-bottom: 0.5rem; font-size: 1.08rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
+        .feature-item {
+            flex: 1 1 260px;
+            min-width: 180px;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            background: #f4f6fa;
+            border-radius: 10px;
+            padding: 0.85rem 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.08rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
         .feature-icon { font-size: 1.3rem; color: #28a745; margin-right: 0.85rem; min-width: 1.5em; text-align: center; }
         .feature-item span { font-weight: 500; }
+        .vehicle-carousel .slick-slide img { border-radius: 12px; max-height: 420px; object-fit: cover; width: 100%; }
+        @media (max-width: 1199px) {
+            .container { max-width: 960px; }
+            .vehicle-card { padding: 1.5rem 1rem; }
+        }
         @media (max-width: 991px) {
-            .vehicle-card { padding: 1.2rem; }
+            .container { max-width: 720px; }
+            .vehicle-card { padding: 1rem 0.5rem; }
             .feature-list { gap: 0.7rem; }
+            .feature-item { flex: 1 1 48%; min-width: 140px; }
+            .vehicle-carousel .slick-slide img { max-height: 300px; }
         }
         @media (max-width: 767px) {
-            .vehicle-card { padding: 0.7rem; }
+            .container { max-width: 100%; padding: 0 4px; }
+            .vehicle-card { padding: 0.7rem 0.2rem; }
             .feature-list { flex-direction: column; gap: 0.5rem; }
+            .feature-item { flex: 1 1 100%; min-width: 0; }
+            .vehicle-carousel .slick-slide img { max-height: 200px; }
+            .vehicle-section { margin-bottom: 1.1rem; }
+        }
+        @media (max-width: 575px) {
+            .container { padding: 0 2px; }
+            .vehicle-card { padding: 0.4rem 0.1rem; }
+            .vehicle-section { margin-bottom: 0.7rem; }
+            .feature-item { font-size: 0.98rem; padding: 0.6rem 0.7rem; flex: 1 1 100%; min-width: 0; }
+            .vehicle-card h2, .vehicle-card h4 { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -36,9 +127,9 @@
             <div class="vehicle-card p-0">
                 <div class="vehicle-carousel">
                     <!-- Slick carousel images will go here -->
-                    <div><img src="images/resource/jeep1.jpg" class="img-fluid w-100" alt="Jeep Cherokee 1"></div>
-                    <div><img src="images/resource/jeep2.jpg" class="img-fluid w-100" alt="Jeep Cherokee 2"></div>
-                    <div><img src="images/resource/jeep3.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                    <div><img src="images/firststopcars/car-1 ford/ford-1.jpg" class="img-fluid w-100" alt="Jeep Cherokee 1"></div>
+                    <div><img src="images/firststopcars/car-1 ford/ford-2.jpg" class="img-fluid w-100" alt="Jeep Cherokee 2"></div>
+                    <div><img src="images/firststopcars/car-1 ford/ford-3.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
                 </div>
             </div>
         </div>
@@ -60,11 +151,11 @@
         <div class="vehicle-section">
             <div class="vehicle-card">
                 <h4 class="mb-3">Specifications</h4>
-                <div class="row">
-                    <div class="col-md-4 col-6 mb-2"><i class="fas fa-cogs spec-icon"></i> <strong>Drivetrain:</strong> 4x4</div>
-                    <div class="col-md-4 col-6 mb-2"><i class="fas fa-tachometer-alt spec-icon"></i> <strong>Engine:</strong> 3.2L V6</div>
-                    <div class="col-md-4 col-6 mb-2"><i class="fas fa-car spec-icon"></i> <strong>Exterior Color:</strong> Grey</div>
-                    <div class="col-md-4 col-6 mb-2"><i class="fas fa-chair spec-icon"></i> <strong>Interior Color:</strong> Black</div>
+                <div class="specifications-row">
+                    <div class="specification-item"><i class="fas fa-cogs spec-icon"></i> <strong>Drivetrain:</strong>&nbsp;4x4</div>
+                    <div class="specification-item"><i class="fas fa-tachometer-alt spec-icon"></i> <strong>Engine:</strong>&nbsp;3.2L V6</div>
+                    <div class="specification-item"><i class="fas fa-car spec-icon"></i> <strong>Exterior Color:</strong>&nbsp;Grey</div>
+                    <div class="specification-item"><i class="fas fa-chair spec-icon"></i> <strong>Interior Color:</strong>&nbsp;Black</div>
                 </div>
             </div>
         </div>
@@ -74,26 +165,26 @@
             <div class="vehicle-card">
                 <h4 class="mb-3">Features & Options</h4>
                 <div class="feature-list">
-                    <div class="feature-item"><i class="fas fa-fire feature-icon"></i><span>Heated Front Seats</span></div>
-                    <div class="feature-item"><i class="fas fa-fire feature-icon"></i><span>Heated Steering Wheel</span></div>
-                    <div class="feature-item"><i class="fas fa-mountain feature-icon"></i><span>Select-Terrain 4x4 System <small>(Snow / Sand / Mud / Rock)</small></span></div>
-                    <div class="feature-item"><i class="fas fa-lock feature-icon"></i><span>Rear Locking Differential</span></div>
-                    <div class="feature-item"><i class="fas fa-arrow-down feature-icon"></i><span>Hill Descent Control</span></div>
-                    <div class="feature-item"><i class="fas fa-shield-alt feature-icon"></i><span>Skid Plates & Off-Road Suspension</span></div>
-                    <div class="feature-item"><i class="fas fa-camera feature-icon"></i><span>Backup Camera</span></div>
-                    <div class="feature-item"><i class="fas fa-bluetooth feature-icon"></i><span>Bluetooth</span></div>
-                    <div class="feature-item"><i class="fas fa-tablet-alt feature-icon"></i><span>Touchscreen Infotainment System</span></div>
-                    <div class="feature-item"><i class="fab fa-apple feature-icon"></i><span>Apple CarPlay / Android Auto</span></div>
-                    <div class="feature-item"><i class="fas fa-window-maximize feature-icon"></i><span>Power Windows</span></div>
-                    <div class="feature-item"><i class="fas fa-lock feature-icon"></i><span>Power Door Locks</span></div>
-                    <div class="feature-item"><i class="fas fa-mirror feature-icon"></i><span>Power Mirrors</span></div>
-                    <div class="feature-item"><i class="fas fa-key feature-icon"></i><span>Keyless Entry</span></div>
-                    <div class="feature-item"><i class="fas fa-road feature-icon"></i><span>Cruise Control</span></div>
-                    <div class="feature-item"><i class="fas fa-sliders-h feature-icon"></i><span>Steering Wheel Mounted Controls</span></div>
-                    <div class="feature-item"><i class="fas fa-car-crash feature-icon"></i><span>Traction Control</span></div>
-                    <div class="feature-item"><i class="fas fa-tire feature-icon"></i><span>Alloy Wheels</span></div>
-                    <div class="feature-item"><i class="fas fa-lightbulb feature-icon"></i><span>Fog Lamps</span></div>
-                    <div class="feature-item"><i class="fas fa-sun feature-icon"></i><span>Daytime Running Lights</span></div>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-fire feature-icon"></i><span>Heated Front Seats</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-fire feature-icon"></i><span>Heated Steering Wheel</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-mountain feature-icon"></i><span>Select-Terrain 4x4 System <small>(Snow / Sand / Mud / Rock)</small></span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-lock feature-icon"></i><span>Rear Locking Differential</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-arrow-down feature-icon"></i><span>Hill Descent Control</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-shield-alt feature-icon"></i><span>Skid Plates & Off-Road Suspension</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-camera feature-icon"></i><span>Backup Camera</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-bluetooth feature-icon"></i><span>Bluetooth</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-tablet-alt feature-icon"></i><span>Touchscreen Infotainment System</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fab fa-apple feature-icon"></i><span>Apple CarPlay / Android Auto</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-window-maximize feature-icon"></i><span>Power Windows</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-lock feature-icon"></i><span>Power Door Locks</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-mirror feature-icon"></i><span>Power Mirrors</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-key feature-icon"></i><span>Keyless Entry</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-road feature-icon"></i><span>Cruise Control</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-sliders-h feature-icon"></i><span>Steering Wheel Mounted Controls</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-car-crash feature-icon"></i><span>Traction Control</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-tire feature-icon"></i><span>Alloy Wheels</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-lightbulb feature-icon"></i><span>Fog Lamps</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-sun feature-icon"></i><span>Daytime Running Lights</span></a>
                 </div>
             </div>
         </div>
