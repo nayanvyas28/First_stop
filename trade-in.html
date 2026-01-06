@@ -142,11 +142,9 @@
 
 
 
-                                    <form
-                                            action="https://docs.google.com/forms/d/e/1FAIpQLSeJvP6szqV--Axb-xpobWz8RQDj-mnVDOQTBJEiMrh9DIfonQ/formResponse"
-                                            method="POST" target="hidden_iframe" class="row"
-                                            id="tradeForm"
-                                            onsubmit="return handleTradeFormSubmit();">
+                                    <form target="hidden_iframe" class="row"
+                                            id="TradeForm"
+                                             >
 
                                     <!-- Popup Modal -->
                                     <div id="tradePopup" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
@@ -176,7 +174,7 @@
                                         <div class="col-lg-6">
                                             <div class="form_boxes">
                                                 <label>Phone</label>
-                                                <input type="text" name="entry.1481119987"
+                                                <input type="tel" name="entry.1481119987"
                                                     placeholder="+1 (XXX) XXX-XXXX">
                                             </div>
                                         </div>
@@ -405,17 +403,28 @@
     <script src="js/knob.js"></script>
     <script src="js/mmenu.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        function handleTradeFormSubmit() {
-            document.getElementById("tradeForm").style.display = "none";
-            document.getElementById("successMessage").style.display = "block";
-            // Show popup
-            document.getElementById("tradePopup").style.display = "flex";
-            return true; // allow form to submit
-        }
-        function closeTradePopup() {
-            document.getElementById("tradePopup").style.display = "none";
-        }
-    </script>
+
+
+  <script>
+document.getElementById("TradeForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // STOP page redirect
+
+    const formData = new FormData(this);
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSeJvP6szqV--Axb-xpobWz8RQDj-mnVDOQTBJEiMrh9DIfonQ/formResponse", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors" // REQUIRED for Google Forms
+    })
+    .then(() => {
+        alert("✅ Your message has been submitted successfully!");
+        this.reset();
+    })
+    .catch(() => {
+        alert("❌ Something went wrong. Please try again.");
+    });
+});
+</script>
+
 
 </body>
