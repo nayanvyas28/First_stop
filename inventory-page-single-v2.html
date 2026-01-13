@@ -15,10 +15,163 @@
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+<script src="js/respond.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .boxcar-header .c-box { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .boxcar-header .st-logo { display: flex; justify-content: flex-start; align-items: center; width: 100%; margin-bottom: 10px; }
+    .boxcar-header .st-logo img { max-width: 260px; width: 100%; height: auto; display: block; margin: 0 auto; }
+    .boxcar-header .nav-out-bar { width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+    .boxcar-header .right-box { display: flex; justify-content: center; align-items: center; }
+    
+    /* Navigation Spacing Fix */
+    .boxcar-header .main-menu .navigation > li,
+    .sticky-header .main-menu .navigation > li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+        padding: 5px 50px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .sticky-header .main-menu .navigation > li > a { color: #ffffff !important; }
+    .sticky-header .logo img { max-height: unset !important; max-width: 260px !important; height: auto !important; width: 100%; }
+    .sticky-header .nav-out-bar { display: flex; justify-content: flex-end; align-items: center; }
+
+    /* Mobile Navigation Styling */
+    .mobile-navigation { display: none; margin-left: auto; align-items: center; }
+    .mobile-navigation a { display: flex; align-items: center; }
+    
+    /* Sidebar (Mobile Menu) Styling */
+    .mm-navbar__title { display: none !important; } /* Hide "Menu" text */
+    .mm-logo-header img { filter: brightness(0); } /* Make sidebar logo black */
+    
+    /* Fix Dropdown Arrows Alignment (Inventory Filters) */
+    .drop-menu .select {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-right: 15px;
+    }
+    
+    /* Fix Inventory Sidebar "More Filter" Overlap & Width */
+    .wrap-fixed-sidebar {
+        position: fixed !important; /* Ensure fixed positioning */
+        z-index: 2147483647 !important; /* MAX INT to ensure top-most */
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: none; /* KEY FIX: Hide by default */
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .wrap-fixed-sidebar.active {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+    .widget-sidebar-filter {
+        width: 300px !important; /* Further reduced from 320px */
+        max-width: 85vw !important;
+        right: auto !important; 
+        left: 0 !important; /* Move to Left to match Mobile Menu UI */
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        background-color: #ffffff !important; /* Ensure Opaque Background */
+        overflow-y: auto !important; /* Ensure scrollable */
+    }
+
+    /* Sidebar Width Override - FURTHER REDUCED */
+    .mm-menu { 
+        width: 65% !important; 
+        max-width: 260px !important; /* SIGNIFICANTLY REDUCED WIDTH */
+        background-color: #ffffff !important; /* Fix Transparency */
+        z-index: 99999999 !important; /* Fix Z-Index Overlap */
+    }
+    .mm-panels, .mm-panel {
+        background-color: #ffffff !important; /* Ensure Panels are White */
+    }
+
+    /* Reduce Navbar Gap (User Request) */
+    .mm-navbar {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* RESPONSIVE LOGIC: Desktop ONLY above 1040px */
+    @media (min-width: 1041px) {
+        .boxcar-header .nav-out-bar, .sticky-header .nav-out-bar { display: flex !important; }
+        /* FORCE NAV CONTENT TO SHOW: Overrides theme hiding logic */
+        .boxcar-header .nav-out-bar .nav, .sticky-header .nav-out-bar .nav { display: block !important; }
+        .boxcar-header .main-menu, .sticky-header .main-menu { display: block !important; }
+        
+        .mobile-navigation { display: none !important; }
+        .boxcar-header .st-logo img { max-width: 260px; }
+        
+        /* Ensure right-box is visible on desktop */
+        .boxcar-header .right-box { display: flex !important; }
+    }
+
+    /* RESPONSIVE LOGIC: Mobile/Tablet at 1040px or less */
+    @media (max-width: 1040px) {
+        .boxcar-header .st-logo img { max-width: 180px; }
+        .sticky-header .logo img { max-width: 180px !important; }
+        
+        /* Hide Desktop Nav */
+        .boxcar-header .nav-out-bar, .sticky-header .nav-out-bar { display: none !important; }
+        
+        /* FIX: Show Right Box BUT hide everything except Hamburger */
+        .boxcar-header .right-box { display: flex !important; align-items: center !important; }
+        .boxcar-header .right-box > * { display: none !important; } 
+        .boxcar-header .right-box > .mobile-navigation { display: flex !important; margin-left: auto !important; }
+
+        /* Show Hamburger */
+        .mobile-navigation { display: flex !important; }
+        
+        .sticky-header { padding: 5px 20px !important; }
+    }
+    
+    @media (max-width: 575px) {
+        .boxcar-header .st-logo img { max-width: 140px; }
+        .sticky-header .logo img { max-width: 140px !important; }
+    }
+</style>
 <body>
 
 <div class="boxcar-wrapper">
@@ -262,7 +415,125 @@
         <!-- End Header Search -->
 
         <div id="nav-mobile"></div>
-	</header>
+	
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            
+
+
+            <!-- Sticky Header -->
+            <div class="sticky-header">
+                <div class="inner-container">
+                    <div class="c-box">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
+                        </div>
+                        <div class="nav-out-bar">
+                            <nav class="nav main-menu">
+                                <ul class="navigation" id="navbar">
+                                    <li><a href="index.html"><span>Home</span></a></li>
+                                    <li><a href="about.html"><span>About</span></a></li>
+                                    <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                    <li><a href="trade-in.html"><span>Trade-In</span></a></li>
+                                    <li><a href="contact.html"><span>Contact</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Mobile Trigger for Sticky Header -->
+                        <div class="mobile-navigation">
+                            <a href="#nav-mobile" title="">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sticky Header -->
+
+</header>
     <!-- End header-section -->
 
     <!-- inventory-section -->
@@ -1313,138 +1584,97 @@
     
     <!-- main footer -->
     <footer class="boxcar-footer footer-style-one v1 cus-st-1">
-        <div class="footer-top">
-            <div class="boxcar-container">
-                <div class="right-box">
-                    <div class="top-left wow fadeInUp">
-                        <h6 class="title">Join FIRST STOP MOTORS</h6>
-                        <div class="text">Receive pricing updates, shopping tips & more!</div>
-                    </div>
-                    <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
-                        <form method="post" action="inventory-page-single-v2.html#">
-                            <div class="form-group">
-                                <input type="email" name="email" class="email" value="" placeholder="Your e-mail address" required="">
-                                <button type="button" class="theme-btn btn-style-one hover-light"><span class="btn-title">Sign Up</span></button>
-                            </div>
-                        </form>
+            <div class="footer-top">
+                <div class="boxcar-container">
+                    <div class="right-box">
+                        <div class="top-left wow fadeInUp">
+                            <h6 class="title">Join FIRST STOP MOTORS</h6>
+                            <div class="text">Receive pricing updates, shopping tips & more!</div>
+                        </div>
+                        <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
+                            <form method="post" action="index.html">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="email" value=""
+                                        placeholder="Your e-mail address" required="">
+                                    <button type="button" class="theme-btn btn-style-one hover-light"><span
+                                            class="btn-title">Sign Up</span></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="widgets-section">
-            <div class="boxcar-container">
-                <div class="row">
-                    <!-- Footer COlumn -->
-                    <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp">
-                                    <h4 class="widget-title">Useful Links</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="inventory-page-single-v2.html#">About Us</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Careers</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Blog</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">FAQs</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Finance</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Contact Us</a></li>
-                                        </ul>                                
-                                    </div>
+                        <div class="widgets-section">
+                <div class="boxcar-container">
+                    <div class="row">
+                        <!-- Footer Column: Logo & Contact -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget logo-widget wow fadeInUp">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
-                                    <h4 class="widget-title">Quick Links</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="inventory-page-single-v2.html#">Get in Touch</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Help center</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Live chat</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">How it works</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="200ms">
-                                    <h4 class="widget-title">Our Brands</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="inventory-page-single-v2.html#">Aston Martin</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Audi</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Bentley</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">BMW</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Bugatti</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Ferrari</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Jaguar</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Lamborghini</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="300ms">
-                                    <h4 class="widget-title">Vehicles Type</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="inventory-page-single-v2.html#">Pickup</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Coup</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Family MPV</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Sedan</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">SUVs</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Sport Coupe</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Convertible</a></li>
-                                            <li><a href="inventory-page-single-v2.html#">Wagon</a></li>
-                                        </ul>
-                                    </div>
+                                <div class="text">
+                                    1234 Street Name, City, State, Zip Code<br>
+                                    <a href="mailto:info@firststopmotors.com">info@firststopmotors.com</a><br>
+                                    <a href="tel:+11234567890">+1 123 456 7890</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- footer column -->
-                    <div class="footer-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="400ms">
-                         <h4 class="widget-title">Vehicles Type</h4>
-                            <div class="widget-content">
-                                <a href="inventory-page-single-v2.html#" class="store">
-                                    <img src="images/resource/apple.png">
-                                    <span>Download on the</span>
-                                    <h6 class="title">Apple Store</h6>
-                                </a>
-                                <a href="inventory-page-single-v2.html#" class="store two">
-                                    <img src="images/resource/play-2.png">
-                                    <span>Get in on</span>
-                                    <h6 class="title">Google Play</h6>
-                                </a>
-                                <div class="social-icons">
-                                    <h6 class="title">Connect With Us</h6>
-                                    <ul>
-                                        <li><a href="inventory-page-single-v2.html#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="inventory-page-single-v2.html#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="inventory-page-single-v2.html#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="inventory-page-single-v2.html#"><i class="fab fa-linkedin-in"></i></a></li>
+
+                        <!-- Footer Column: Useful Links -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget links-widget wow fadeInUp">
+                                <h4 class="widget-title">Useful Links</h4>
+                                <div class="widget-content">
+                                    <ul class="user-links style-two">
+                                        <li><a href="about.html">About Us</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="inventory-list-01.html">Inventory</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="trade-in.html">Trade-In</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Footer Column: Connect With Us & Hours -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="200ms">
+                                <h4 class="widget-title">Connect With Us</h4>
+                                <div class="widget-content">
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="text" style="margin-top: 20px;">
+                                        <h6 class="title" style="color:white; margin-bottom:10px;">Working Hours</h6>
+                                        Monday - Saturday: 10:00 AM - 06:00 PM<br>
+                                        Sunday: Closed
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--  Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="boxcar-container">
-                <div class="inner-container">
-                    <div class="copyright-text wow fadeInUp">© <a href="inventory-page-single-v2.html#">2024 FIRST STOP MOTORSs.com. All rights reserved.</a></div>
-
-                    <ul class="footer-nav wow fadeInUp" data-wow-delay="200ms">
-                        <li><a href="inventory-page-single-v2.html#">Terms & Conditions</a></li>
-                        <li><a href="inventory-page-single-v2.html#">Privacy Notice</a></li>
-                    </ul>
+            <!--  Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="boxcar-container">
+                    <div class="inner-container">
+                        <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
+                        <div class="developed-by wow fadeInUp" style="margin-top:10px;color: white;">
+                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener"
+                                style="color: red;">BigInIT
+                                Technologies LLP</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+</footer>
     <!-- End boxcar-footer -->
 
     
@@ -1465,5 +1695,153 @@
 <script src="js/knob.js"></script>
 <script src="js/mmenu.js"></script>
 <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var sidebar = document.querySelector(".wrap-fixed-sidebar");
+        if (sidebar && document.body) {
+            document.body.appendChild(sidebar);
+        }
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Wait for mmenu to initialize
+        setTimeout(function() {
+            var mmenu = document.querySelector(".mm-menu");
+            if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                var logoDiv = document.createElement("div");
+                logoDiv.className = "mm-logo-header";
+                logoDiv.className = "mm-logo-header";
+                logoDiv.style.textAlign = "left"; 
+                logoDiv.style.display = "flex"; // Use Flexbox
+                logoDiv.style.justifyContent = "flex-start"; // Force Left
+                logoDiv.style.alignItems = "center";
+                logoDiv.style.padding = "70px 0px 20px 20px"; // Top 70, Bottom 20, Left 20
+                logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                // Insert at the top of the menu panel
+                var panel = mmenu.querySelector(".mm-panel");
+                if (panel) {
+                    panel.insertBefore(logoDiv, panel.firstChild);
+                }
+            }
+        }, 1000); // Delay to ensure mmenu is ready
+
+        // REMOVE mm-wrapper_opening CLASS (User Request)
+        // This class manages the opening animation but user wants it gone
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "class") {
+                    var target = mutation.target;
+                    if (target.classList.contains("mm-wrapper_opening")) {
+                        target.classList.remove("mm-wrapper_opening");
+                        // console.log("Removed mm-wrapper_opening from", target);
+                    }
+                }
+            });
+        });
+        
+        // Observe html and body and wrapper
+        observer.observe(document.documentElement, { attributes: true });
+        observer.observe(document.body, { attributes: true });
+        // Also check initial state
+        document.documentElement.classList.remove("mm-wrapper_opening");
+        document.body.classList.remove("mm-wrapper_opening");
+    });
+</script>
+
 </body>
 </html>

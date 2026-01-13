@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>2015 Acura MDX | FIRST STOP MOTORS</title>
+    <!-- Stylesheets -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link href="../css/mmenu.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
+
+
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="../js/respond.js"></script><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .boxcar-header .c-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .boxcar-header .st-logo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .boxcar-header .st-logo img {
+        max-width: 260px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .boxcar-header .nav-out-bar {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .boxcar-header .right-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Navigation Spacing Fix */
+    .boxcar-header .main-menu .navigation>li,
+    .sticky-header .main-menu .navigation>li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+        padding: 5px 50px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sticky-header .main-menu .navigation>li>a {
+        color: #ffffff !important;
+    }
+
+    .sticky-header .logo img {
+        max-height: unset !important;
+        max-width: 260px !important;
+        height: auto !important;
+        width: 100%;
+    }
+
+    .sticky-header .nav-out-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    /* Mobile Navigation Styling */
+    .mobile-navigation {
+        display: none;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .mobile-navigation a {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Sidebar (Mobile Menu) Styling */
+    .mm-navbar__title {
+        display: none !important;
+    }
+
+    /* Hide "Menu" text */
+    .mm-logo-header img {
+        filter: brightness(0);
+    }
+
+    /* Make sidebar logo black */
+
+    /* Fix Dropdown Arrows Alignment (Inventory Filters) */
+    .drop-menu .select {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-right: 15px;
+    }
+
+    /* Fix Inventory Sidebar "More Filter" Overlap & Width */
+    .wrap-fixed-sidebar {
+        position: fixed !important;
+        /* Ensure fixed positioning */
+        z-index: 2147483647 !important;
+        /* MAX INT to ensure top-most */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        /* KEY FIX: Hide by default */
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .wrap-fixed-sidebar.active {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .widget-sidebar-filter {
+        width: 300px !important;
+        /* Further reduced from 320px */
+        max-width: 85vw !important;
+        right: auto !important;
+        left: 0 !important;
+        /* Move to Left to match Mobile Menu UI */
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        background-color: #ffffff !important;
+        /* Ensure Opaque Background */
+        overflow-y: auto !important;
+        /* Ensure scrollable */
+    }
+
+    /* Sidebar Width Override - FURTHER REDUCED */
+    .mm-menu {
+        width: 65% !important;
+        max-width: 260px !important;
+        /* SIGNIFICANTLY REDUCED WIDTH */
+        background-color: #ffffff !important;
+        /* Fix Transparency */
+        z-index: 99999999 !important;
+        /* Fix Z-Index Overlap */
+    }
+
+    .mm-panels,
+    .mm-panel {
+        background-color: #ffffff !important;
+        /* Ensure Panels are White */
+    }
+
+    /* Reduce Navbar Gap (User Request) */
+    .mm-navbar {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* RESPONSIVE LOGIC: Desktop ONLY above 1040px */
+    @media (min-width: 1041px) {
+
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: flex !important;
+        }
+
+        /* FORCE NAV CONTENT TO SHOW: Overrides theme hiding logic */
+        .boxcar-header .nav-out-bar .nav,
+        .sticky-header .nav-out-bar .nav {
+            display: block !important;
+        }
+
+        .boxcar-header .main-menu,
+        .sticky-header .main-menu {
+            display: block !important;
+        }
+
+        .mobile-navigation {
+            display: none !important;
+        }
+
+        .boxcar-header .st-logo img {
+            max-width: 260px;
+        }
+
+        /* Ensure right-box is visible on desktop */
+        .boxcar-header .right-box {
+            display: flex !important;
+        }
+    }
+
+    /* RESPONSIVE LOGIC: Mobile/Tablet at 1040px or less */
+    @media (max-width: 1040px) {
+        .boxcar-header .st-logo img {
+            max-width: 180px;
+        }
+
+        .sticky-header .logo img {
+            max-width: 180px !important;
+        }
+
+        /* Hide Desktop Nav */
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: none !important;
+        }
+
+        /* FIX: Show Right Box BUT hide everything except Hamburger */
+        .boxcar-header .right-box {
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .boxcar-header .right-box>* {
+            display: none !important;
+        }
+
+        .boxcar-header .right-box>.mobile-navigation {
+            display: flex !important;
+            margin-left: auto !important;
+        }
+
+        /* Show Hamburger */
+        .mobile-navigation {
+            display: flex !important;
+        }
+
+        .sticky-header {
+            padding: 5px 20px !important;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .boxcar-header .st-logo img {
+            max-width: 140px;
+        }
+
+        .sticky-header .logo img {
+            max-width: 140px !important;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="boxcar-wrapper">
+        <!-- Main Header-->
+        <header class="boxcar-header header-style-v1 style-two inner-header cus-style-1">
+            <div class="header-inner">
+                <div class="inner-container">
+                    <!-- Main box -->
+                    <div class="c-box">
+                        <div class="logo-inner">
+                            <div class="logo"><a href="../index.html"><img src="../images/logo.svg" alt=""
+                                        title="FIRST STOP MOTORS"></a></div>
+                            <div class="layout-search style1">
+                                <div class="search-box">
+                                    <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.29301 1.2876C3.9872 1.2876 1.29431 3.98048 1.29431 7.28631C1.29431 10.5921 3.9872 13.2902 7.29301 13.2902C8.70502 13.2902 10.0036 12.7954 11.03 11.9738L13.5287 14.4712C13.6548 14.5921 13.8232 14.6588 13.9979 14.657C14.1725 14.6552 14.3395 14.5851 14.4631 14.4617C14.5867 14.3382 14.6571 14.1713 14.6591 13.9967C14.6611 13.822 14.5947 13.6535 14.474 13.5272L11.9753 11.0285C12.7976 10.0006 13.293 8.69995 13.293 7.28631C13.293 3.98048 10.5988 1.2876 7.29301 1.2876ZM7.29301 2.62095C9.87824 2.62095 11.9584 4.70108 11.9584 7.28631C11.9584 9.87153 9.87824 11.9569 7.29301 11.9569C4.70778 11.9569 2.62764 9.87153 2.62764 7.28631C2.62764 4.70108 4.70778 2.62095 7.29301 2.62095Z"
+                                            fill="white" />
+                                    </svg>
+                                    <input type="search" placeholder="Search Cars eg. Audi Q7" class="show-search"
+                                        name="name" tabindex="2" value="" aria-required="true" required="">
+
+                                </div>
+                                <div class="box-content-search" id="box-content-search">
+                                    <ul class="box-car-search">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Nav Box-->
+                        <div class="nav-out-bar">
+                            <nav class="nav main-menu">
+                                <ul class="navigation" id="navbar">
+                                    <li><a href="../index.html">Home</a></li>
+                                    <li><a href="../about.html">About</a></li>
+                                    <li><a href="../inventory-list-01.html">Inventory</a></li>
+                                    <li><a href="../trade-in.html">Trade-In</a></li>
+                                    <li><a href="../contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                            <!-- Main Menu End-->
+                        </div>
+
+                        <div class="right-box">
+
+                            <div class="mobile-navigation">
+                                <a href="#nav-mobile" title="">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu  -->
+                </div>
+            </div>
+
+            <!-- Header Search -->
+            <div class="search-popup">
+                <span class="search-back-drop"></span>
+                <button class="close-search"><span class="fa fa-times"></span></button>
+
+                <div class="search-inner">
+                    <form method="post" action="../index.html">
+                        <div class="form-group">
+                            <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Header Search -->
+
+            <div id="nav-mobile"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Sticky Header -->
+            <div class="sticky-header">
+                <div class="inner-container">
+                    <div class="c-box">
+                        <div class="logo">
+                            <a href="../index.html"><img src="../images/logo.svg" alt="First Stop Motors"></a>
+                        </div>
+                        <div class="nav-out-bar">
+                            <nav class="nav main-menu">
+                                <ul class="navigation" id="navbar">
+                                    <li><a href="../index.html"><span>Home</span></a></li>
+                                    <li><a href="../about.html"><span>About</span></a></li>
+                                    <li><a href="../inventory-list-01.html"><span>Inventory</span></a></li>
+                                    <li><a href="../trade-in.html"><span>Trade-In</span></a></li>
+                                    <li><a href="../contact.html"><span>Contact</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Mobile Trigger for Sticky Header -->
+                        <div class="mobile-navigation">
+                            <a href="#nav-mobile" title="">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sticky Header -->
+
+        </header>
+        <!-- End header-section -->
+
+        <!-- inventory-section -->
+        <section class="inventory-section pb-0 layout-radius">
+            <div class="boxcar-container">
+                <div class="boxcar-title-three">
+                    <ul class="breadcrumb">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><span>Cars for Sale</span></li>
+                        <li><span>Acura MDX</span></li>
+                    </ul>
+                    <h2>2015 Acura MDX</h2>
+                    <div class="text">Advance Package 2015 Acura MDX</div>
+                    <ul class="spectes-list">
+                        <li><span><img src="../images/resource/spec1-1.svg">2015</span></li>
+                        <li><span><img src="../images/resource/spec1-2.svg">171,134 KM</span></li>
+                        <li><span><img src="../images/resource/spec1-3.svg">Automatic</span></li>
+                        <li><span><img src="../images/resource/spec1-4.svg">Gasoline</span></li>
+                    </ul>
+                    <div class="content-box">
+                        <div class="btn-box">
+                            <div class="share-btn">
+                                <span>Share</span>
+                                <a href="#" class="share"><img src="../images/resource/share.svg"></a>
+                            </div>
+                            <div class="share-btn">
+                                <span>Save</span>
+                                <a href="#" class="share"><img src="../images/resource/share1-1.svg"></a>
+                            </div>
+                        </div>
+                        <h3 class="title">$16,999</h3>
+                        <span>Make An Offer Price</span>
+                    </div>
+                </div>
+                <div class="gallery-sec">
+                    <div class="row">
+                        <div class="image-column item1 col-lg-7 col-md-12 col-sm-12">
+                            <div class="inner-column">
+                                <div class="image-box">
+                                    <figure class="image"><a href="../images/firststopcars/car-3 Acura/acura-1.jpg"
+                                            data-fancybox="gallery"><img
+                                                src="../images/firststopcars/car-3 Acura/acura-1.jpg" alt=""></a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="image-column-two item2 col-6">
+                                    <div class="inner-column">
+                                        <div class="image-box">
+                                            <figure class="image"><a
+                                                    href="../images/firststopcars/car-3 Acura/acura-2.jpg"
+                                                    data-fancybox="gallery" class="fancybox"><img
+                                                        src="../images/firststopcars/car-3 Acura/acura-2.jpg"
+                                                        alt=""></a></figure>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-column-two item3 col-6">
+                                    <div class="inner-column">
+                                        <div class="image-box">
+                                            <figure class="image"><a
+                                                    href="../images/firststopcars/car-3 Acura/acura-3.jpg"
+                                                    data-fancybox="gallery"><img
+                                                        src="../images/firststopcars/car-3 Acura/acura-3.jpg"
+                                                        alt=""></a></figure>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-column-two item4 col-6">
+                                    <div class="inner-column">
+                                        <div class="image-box">
+                                            <figure class="image"><a
+                                                    href="../images/firststopcars/car-3 Acura/acura-4.jpg"
+                                                    data-fancybox="gallery"><img
+                                                        src="../images/firststopcars/car-3 Acura/acura-4.jpg"
+                                                        alt=""></a></figure>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-column-two item5 col-6">
+                                    <div class="inner-column">
+                                        <div class="image-box">
+                                            <figure class="image">
+                                                <a href="../images/firststopcars/car-3 Acura/acura-5.jpg"
+                                                    data-fancybox="gallery" class="view-more-link">
+                                                    <img src="../images/firststopcars/car-3 Acura/acura-5.jpg" alt="">
+                                                    <span class="view-more-overlay">+ View More Photos</span>
+                                                </a>
+                                                <!-- Hidden images for gallery -->
+                                                <a href="../images/firststopcars/car-3 Acura/acura-6.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-7.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-8.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-9.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-10.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-11.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-12.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-13.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-14.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-15.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-16.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-17.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-18.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-19.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-20.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                                <a href="../images/firststopcars/car-3 Acura/acura-21.jpg"
+                                                    data-fancybox="gallery" style="display: none;"></a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="inspection-column col-lg-8 col-md-12 col-sm-12">
+                        <div class="inner-column">
+                            <!-- overview-sec -->
+                            <div class="overview-sec">
+                                <h4 class="title">Car Overview</h4>
+                                <div class="row">
+                                    <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                                        <div class="inner-column">
+                                            <ul class="list">
+                                                <li><span><img src="../images/resource/insep1-1.svg">Body</span>SUV</li>
+                                                <li><span><img
+                                                            src="../images/resource/insep1-2.svg">Mileage</span>171,134
+                                                    KM</li>
+                                                <li><span><img src="../images/resource/insep1-3.svg">Fuel
+                                                        Type</span>Gasoline</li>
+                                                <li><span><img src="../images/resource/insep1-4.svg">Year</span>2015
+                                                </li>
+                                                <li><span><img
+                                                            src="../images/resource/insep1-5.svg">Transmission</span>Automatic
+                                                </li>
+                                                <li><span><img src="../images/resource/insep1-6.svg">Drive
+                                                        Type</span>AWD</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="content-column col-lg-6 col-md-12 col-sm-12">
+                                        <div class="inner-column">
+                                            <ul class="list">
+                                                <li><span><img
+                                                            src="../images/resource/insep1-7.svg">Condition</span>Used
+                                                </li>
+                                                <li><span><img src="../images/resource/insep1-8.svg">Engine
+                                                        Size</span>3.5L V6</li>
+                                                <li><span><img src="../images/resource/insep1-9.svg">Doors</span>4-door
+                                                </li>
+                                                <li><span><img src="../images/resource/insep1-10.svg">Cylinders</span>6
+                                                </li>
+                                                <li><span><img src="../images/resource/insep1-11.svg">Color</span>Dark
+                                                    Blue</li>
+                                                <li><span><img src="../images/resource/insep1-12.svg">VIN</span>-</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- description-sec -->
+                            <div class="description-sec">
+                                <h4 class="title">Description</h4>
+                                <div class="text two">
+                                    2015 Acura MDX AWD Advance Package with Entertainment Package.
+                                </div>
+                                <ul class="des-list">
+                                    <li><a href="#" class="item"><img src="../images/resource/book1-1.svg">View Vin
+                                            Report</a></li>
+                                    <li class="two"><a href="#" class="item"><img
+                                                src="../images/resource/book1-2.svg">Car Brochure</a></li>
+                                    <li class="three"><a href="#" class="item"><img
+                                                src="../images/resource/book1-3.svg">Schedule Test Drive</a></li>
+                                </ul>
+                            </div>
+                            <!-- features-sec -->
+                            <div class="features-sec">
+                                <h4 class="title">Features</h4>
+                                <div class="row">
+                                    <!-- list-column -->
+                                    <div class="list-column col-lg-12 col-md-12 col-sm-12">
+                                        <div class="inner-column">
+                                            <ul class="feature-list">
+                                                <li><i class="fa-solid fa-check"></i>Heated & Ventilated Front Seats
+                                                </li>
+                                                <li><i class="fa-solid fa-check"></i>Heated Steering Wheel</li>
+                                                <li><i class="fa-solid fa-check"></i>Heated Rear Seats</li>
+                                                <li><i class="fa-solid fa-check"></i>Backup Camera</li>
+                                                <li><i class="fa-solid fa-check"></i>Bluetooth</li>
+                                                <li><i class="fa-solid fa-check"></i>Apple CarPlay / Android Auto</li>
+                                                <li><i class="fa-solid fa-check"></i>Power Sunroof</li>
+                                                <li><i class="fa-solid fa-check"></i>Adaptive Cruise Control</li>
+                                                <li><i class="fa-solid fa-check"></i>Fog Lamps</li>
+                                                <li><i class="fa-solid fa-check"></i>Daytime Running Lights</li>
+                                                <li><i class="fa-solid fa-check"></i>Navigation System</li>
+                                                <li><i class="fa-solid fa-check"></i>Rear Seat Entertainment (DVD)</li>
+                                                <li><i class="fa-solid fa-check"></i>Power Adjustable Front Seats
+                                                    (Memory)</li>
+                                                <li><i class="fa-solid fa-check"></i>Premium Leather Interior</li>
+                                                <li><i class="fa-solid fa-check"></i>Blind Spot Monitoring</li>
+                                                <li><i class="fa-solid fa-check"></i>Lane Departure Warning</li>
+                                                <li><i class="fa-solid fa-check"></i>Collision Mitigation Braking</li>
+                                                <li><i class="fa-solid fa-check"></i>Forward Collision Warning</li>
+                                                <li><i class="fa-solid fa-check"></i>Tri-Zone Climate Control</li>
+                                                <li><i class="fa-solid fa-check"></i>Power Tailgate</li>
+                                                <li><i class="fa-solid fa-check"></i>Keyless Entry & Push Button Start
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Location Removed -->
+
+                        </div>
+                    </div>
+                    <div class="side-bar-column style-1 col-lg-4 col-md-12 col-sm-12">
+                        <div class="inner-column">
+                            <div class="contact-box">
+                                <div class="icon-box">
+                                    <img src="../images/resource/volvo.svg">
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title">First Stop Motors</h6>
+                                    <div class="text">Contact us for more details</div>
+                                    <ul class="contact-list">
+                                        <li><a href="#">
+                                                <div class="image-box"><img src="../images/resource/phone1-1.svg"></div>
+                                                Get Directions
+                                            </a></li>
+                                        <li><a href="#">
+                                                <div class="image-box"><img src="../images/resource/phone1-2.svg"></div>
+                                                123-456-7890
+                                            </a></li>
+                                    </ul>
+                                    <div class="btn-box">
+                                        <a href="#" class="side-btn">Message Dealer</a>
+                                        <a href="#" class="side-btn two">Chat Via Whatsapp</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End inventory-section -->
+
+        <!-- main footer -->
+        <footer class="boxcar-footer footer-style-one v1 cus-st-1">
+            <div class="footer-top">
+                <div class="boxcar-container">
+                    <div class="right-box">
+                        <div class="top-left wow fadeInUp">
+                            <h6 class="title">Join FIRST STOP MOTORS</h6>
+                            <div class="text">Receive pricing updates, shopping tips & more!</div>
+                        </div>
+                        <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
+                            <form method="post" action="../index.html">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="email" value=""
+                                        placeholder="Your e-mail address" required="">
+                                    <button type="button" class="theme-btn btn-style-one hover-light"><span
+                                            class="btn-title">Sign Up</span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widgets-section">
+                <div class="boxcar-container">
+                    <div class="row">
+                        <!-- Footer Column: Logo & Contact -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget logo-widget wow fadeInUp">
+                                <div class="logo">
+                                    <a href="../index.html"><img src="../images/logo.svg" alt="First Stop Motors"></a>
+                                </div>
+                                <div class="text">
+                                    1234 Street Name, City, State, Zip Code<br>
+                                    <a href="mailto:info@firststopmotors.com">info@firststopmotors.com</a><br>
+                                    <a href="tel:+11234567890">+1 123 456 7890</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column: Useful Links -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget links-widget wow fadeInUp">
+                                <h4 class="widget-title">Useful Links</h4>
+                                <div class="widget-content">
+                                    <ul class="user-links style-two">
+                                        <li><a href="../about.html">About Us</a></li>
+                                        <li><a href="../contact.html">Contact Us</a></li>
+                                        <li><a href="../inventory-list-01.html">Inventory</a></li>
+                                        <li><a href="../faq.html">FAQ</a></li>
+                                        <li><a href="../trade-in.html">Trade-In</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column: Connect With Us & Hours -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="200ms">
+                                <h4 class="widget-title">Connect With Us</h4>
+                                <div class="widget-content">
+                                    <div class="social-icons">
+                                        <ul>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="text" style="margin-top: 20px;">
+                                        <h6 class="title" style="color:white; margin-bottom:10px;">Working Hours</h6>
+                                        Monday - Saturday: 10:00 AM - 06:00 PM<br>
+                                        Sunday: Closed
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="boxcar-container">
+                    <div class="inner-container">
+                        <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
+                        <div class="developed-by wow fadeInUp" style="margin-top:10px;color: white;">
+                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener"
+                                style="color: red;">BigInIT
+                                Technologies LLP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End boxcar-footer -->
+
+
+    </div><!-- End Page Wrapper -->
+
+    <!-- Scroll To Top -->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/slick.min.js"></script>
+    <script src="../js/slick-animation.min.js"></script>
+    <script src="../js/jquery.fancybox.js"></script>
+    <script src="../js/wow.js"></script>
+    <script src="../js/appear.js"></script>
+    <script src="../js/mixitup.js"></script>
+    <script src="../js/knob.js"></script>
+    <script src="../js/mmenu.js"></script>
+    <script src="../js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebar = document.querySelector(".wrap-fixed-sidebar");
+            if (sidebar && document.body) {
+                document.body.appendChild(sidebar);
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "left";
+                    logoDiv.style.display = "flex"; // Use Flexbox
+                    logoDiv.style.justifyContent = "flex-start"; // Force Left
+                    logoDiv.style.alignItems = "center";
+                    logoDiv.style.padding = "40px 0px 20px 0px"; // Top 70, Bottom 20, Left 20
+                    logoDiv.innerHTML = '<img src="../images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+
+            // REMOVE mm-wrapper_opening CLASS (User Request)
+            // This class manages the opening animation but user wants it gone
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === "class") {
+                        var target = mutation.target;
+                        if (target.classList.contains("mm-wrapper_opening")) {
+                            target.classList.remove("mm-wrapper_opening");
+                            // console.log("Removed mm-wrapper_opening from", target);
+                        }
+                    }
+                });
+            });
+
+            // Observe html and body and wrapper
+            observer.observe(document.documentElement, { attributes: true });
+            observer.observe(document.body, { attributes: true });
+            // Also check initial state
+            document.documentElement.classList.remove("mm-wrapper_opening");
+            document.body.classList.remove("mm-wrapper_opening");
+        });
+    </script>
+
+</body>
+
+</html>

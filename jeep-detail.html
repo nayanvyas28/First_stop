@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2017 Jeep Cherokee Trailhawk - Vehicle Details</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .boxcar-header .c-box { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .boxcar-header .st-logo { display: flex; justify-content: flex-start; align-items: center; width: 100%; margin-bottom: 10px; }
+    .boxcar-header .st-logo img { max-width: 260px; width: 100%; height: auto; display: block; margin: 0 auto; }
+    .boxcar-header .nav-out-bar { width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+    .boxcar-header .right-box { display: flex; justify-content: center; align-items: center; }
+    
+    /* Navigation Spacing Fix */
+    .boxcar-header .main-menu .navigation > li,
+    .sticky-header .main-menu .navigation > li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+        padding: 5px 50px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .sticky-header .main-menu .navigation > li > a { color: #ffffff !important; }
+    .sticky-header .logo img { max-height: unset !important; max-width: 260px !important; height: auto !important; width: 100%; }
+    .sticky-header .nav-out-bar { display: flex; justify-content: flex-end; align-items: center; }
+
+    /* Mobile Navigation Styling */
+    .mobile-navigation { display: none; margin-left: auto; align-items: center; }
+    .mobile-navigation a { display: flex; align-items: center; }
+    
+    /* Sidebar (Mobile Menu) Styling */
+    .mm-navbar__title { display: none !important; } /* Hide "Menu" text */
+    .mm-logo-header img { filter: brightness(0); } /* Make sidebar logo black */
+    
+    /* Fix Dropdown Arrows Alignment (Inventory Filters) */
+    .drop-menu .select {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-right: 15px;
+    }
+    
+    /* Fix Inventory Sidebar "More Filter" Overlap & Width */
+    .wrap-fixed-sidebar {
+        position: fixed !important; /* Ensure fixed positioning */
+        z-index: 2147483647 !important; /* MAX INT to ensure top-most */
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: none; /* KEY FIX: Hide by default */
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .wrap-fixed-sidebar.active {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+    .widget-sidebar-filter {
+        width: 300px !important; /* Further reduced from 320px */
+        max-width: 85vw !important;
+        right: auto !important; 
+        left: 0 !important; /* Move to Left to match Mobile Menu UI */
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        background-color: #ffffff !important; /* Ensure Opaque Background */
+        overflow-y: auto !important; /* Ensure scrollable */
+    }
+
+    /* Sidebar Width Override - FURTHER REDUCED */
+    .mm-menu { 
+        width: 65% !important; 
+        max-width: 260px !important; /* SIGNIFICANTLY REDUCED WIDTH */
+        background-color: #ffffff !important; /* Fix Transparency */
+        z-index: 99999999 !important; /* Fix Z-Index Overlap */
+    }
+    .mm-panels, .mm-panel {
+        background-color: #ffffff !important; /* Ensure Panels are White */
+    }
+
+    /* Reduce Navbar Gap (User Request) */
+    .mm-navbar {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* RESPONSIVE LOGIC: Desktop ONLY above 1040px */
+    @media (min-width: 1041px) {
+        .boxcar-header .nav-out-bar, .sticky-header .nav-out-bar { display: flex !important; }
+        /* FORCE NAV CONTENT TO SHOW: Overrides theme hiding logic */
+        .boxcar-header .nav-out-bar .nav, .sticky-header .nav-out-bar .nav { display: block !important; }
+        .boxcar-header .main-menu, .sticky-header .main-menu { display: block !important; }
+        
+        .mobile-navigation { display: none !important; }
+        .boxcar-header .st-logo img { max-width: 260px; }
+        
+        /* Ensure right-box is visible on desktop */
+        .boxcar-header .right-box { display: flex !important; }
+    }
+
+    /* RESPONSIVE LOGIC: Mobile/Tablet at 1040px or less */
+    @media (max-width: 1040px) {
+        .boxcar-header .st-logo img { max-width: 180px; }
+        .sticky-header .logo img { max-width: 180px !important; }
+        
+        /* Hide Desktop Nav */
+        .boxcar-header .nav-out-bar, .sticky-header .nav-out-bar { display: none !important; }
+        
+        /* FIX: Show Right Box BUT hide everything except Hamburger */
+        .boxcar-header .right-box { display: flex !important; align-items: center !important; }
+        .boxcar-header .right-box > * { display: none !important; } 
+        .boxcar-header .right-box > .mobile-navigation { display: flex !important; margin-left: auto !important; }
+
+        /* Show Hamburger */
+        .mobile-navigation { display: flex !important; }
+        
+        .sticky-header { padding: 5px 20px !important; }
+    }
+    
+    @media (max-width: 575px) {
+        .boxcar-header .st-logo img { max-width: 140px; }
+        .sticky-header .logo img { max-width: 140px !important; }
+    }
+</style>
+<body>
+    <div class="container py-4">
+        <!-- Media Carousel -->
+        <div class="vehicle-section">
+            <div class="vehicle-card p-0">
+                <div class="vehicle-carousel">
+                    <!-- Slick carousel images will go here -->
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-2.jpg" class="img-fluid w-100" alt="Jeep Cherokee 1"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-4.jpg" class="img-fluid w-100" alt="Jeep Cherokee 2"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-10.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-5.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-8.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-11.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-6.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                    <div><img src="images/firststopcars/car-2 jeep/jeep-7.jpg" class="img-fluid w-100" alt="Jeep Cherokee 3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vehicle Overview -->
+        <div class="vehicle-section">
+            <div class="vehicle-card">
+                <h2 class="mb-3">2017 Jeep Cherokee <span class="text-muted">Trailhawk</span></h2>
+                <div class="row">
+                    <div class="col-md-3 col-6 mb-2"><strong>Price:</strong> <span class="h5 text-success">$13,499</span></div>
+                    <div class="col-md-3 col-6 mb-2"><strong>Mileage:</strong> 209,000 kms</div>
+                    <div class="col-md-3 col-6 mb-2"><strong>Trim:</strong> Trailhawk</div>
+                    <div class="col-md-3 col-6 mb-2"><strong>Year:</strong> 2017</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="vehicle-section">
+            <div class="vehicle-card">
+                <h4 class="mb-3">Specifications</h4>
+                <div class="specifications-row">
+                    <div class="specification-item"><i class="fas fa-cogs spec-icon"></i> <strong>Drivetrain:</strong>&nbsp;4x4</div>
+                    <div class="specification-item"><i class="fas fa-tachometer-alt spec-icon"></i> <strong>Engine:</strong>&nbsp;3.2L V6</div>
+                    <div class="specification-item"><i class="fas fa-car spec-icon"></i> <strong>Exterior Color:</strong>&nbsp;Grey</div>
+                    <div class="specification-item"><i class="fas fa-chair spec-icon"></i> <strong>Interior Color:</strong>&nbsp;Black</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features & Options -->
+        <div class="vehicle-section">
+            <div class="vehicle-card">
+                <h4 class="mb-3">Features & Options</h4>
+                <div class="feature-list">
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-fire feature-icon"></i><span>Heated Front Seats</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-fire feature-icon"></i><span>Heated Steering Wheel</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-mountain feature-icon"></i><span>Select-Terrain 4x4 System <small>(Snow / Sand / Mud / Rock)</small></span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-lock feature-icon"></i><span>Rear Locking Differential</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-arrow-down feature-icon"></i><span>Hill Descent Control</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-shield-alt feature-icon"></i><span>Skid Plates & Off-Road Suspension</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-camera feature-icon"></i><span>Backup Camera</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-bluetooth feature-icon"></i><span>Bluetooth</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-tablet-alt feature-icon"></i><span>Touchscreen Infotainment System</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fab fa-apple feature-icon"></i><span>Apple CarPlay / Android Auto</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-window-maximize feature-icon"></i><span>Power Windows</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-lock feature-icon"></i><span>Power Door Locks</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-mirror feature-icon"></i><span>Power Mirrors</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-key feature-icon"></i><span>Keyless Entry</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-road feature-icon"></i><span>Cruise Control</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-sliders-h feature-icon"></i><span>Steering Wheel Mounted Controls</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-car-crash feature-icon"></i><span>Traction Control</span></a>
+                    <a class="feature-item" href="images/resource/jeep3.jpg" target="_blank"><i class="fas fa-tire feature-icon"></i><span>Alloy Wheels</span></a>
+                    <a class="feature-item" href="images/resource/jeep1.jpg" target="_blank"><i class="fas fa-lightbulb feature-icon"></i><span>Fog Lamps</span></a>
+                    <a class="feature-item" href="images/resource/jeep2.jpg" target="_blank"><i class="fas fa-sun feature-icon"></i><span>Daytime Running Lights</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Libraries -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.vehicle-carousel').slick({
+                dots: true,
+                arrows: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                adaptiveHeight: true,
+                customPaging: function(slider, i) {
+                    var thumb = $(slider.$slides[i]).find('img').attr('src');
+                    return '<img src="'+thumb+'" class="img-thumbnail" style="height:48px;width:auto;">';
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var sidebar = document.querySelector(".wrap-fixed-sidebar");
+        if (sidebar && document.body) {
+            document.body.appendChild(sidebar);
+        }
+    });
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Wait for mmenu to initialize
+        setTimeout(function() {
+            var mmenu = document.querySelector(".mm-menu");
+            if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                var logoDiv = document.createElement("div");
+                logoDiv.className = "mm-logo-header";
+                logoDiv.className = "mm-logo-header";
+                logoDiv.style.textAlign = "left"; 
+                logoDiv.style.display = "flex"; // Use Flexbox
+                logoDiv.style.justifyContent = "flex-start"; // Force Left
+                logoDiv.style.alignItems = "center";
+                logoDiv.style.padding = "70px 0px 20px 20px"; // Top 70, Bottom 20, Left 20
+                logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                // Insert at the top of the menu panel
+                var panel = mmenu.querySelector(".mm-panel");
+                if (panel) {
+                    panel.insertBefore(logoDiv, panel.firstChild);
+                }
+            }
+        }, 1000); // Delay to ensure mmenu is ready
+
+        // REMOVE mm-wrapper_opening CLASS (User Request)
+        // This class manages the opening animation but user wants it gone
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "class") {
+                    var target = mutation.target;
+                    if (target.classList.contains("mm-wrapper_opening")) {
+                        target.classList.remove("mm-wrapper_opening");
+                        // console.log("Removed mm-wrapper_opening from", target);
+                    }
+                }
+            });
+        });
+        
+        // Observe html and body and wrapper
+        observer.observe(document.documentElement, { attributes: true });
+        observer.observe(document.body, { attributes: true });
+        // Also check initial state
+        document.documentElement.classList.remove("mm-wrapper_opening");
+        document.body.classList.remove("mm-wrapper_opening");
+    });
+</script>
+
+</body>
+</html>

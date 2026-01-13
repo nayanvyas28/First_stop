@@ -18,7 +18,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
     .boxcar-header .c-box {
         display: flex;
@@ -28,43 +61,246 @@
     }
 
     .boxcar-header .st-logo {
-        flex: 0 0 auto;
         display: flex;
         justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     .boxcar-header .st-logo img {
-        max-width: 180px;
+        max-width: 260px;
+        width: 100%;
         height: auto;
+        display: block;
+        margin: 0 auto;
     }
 
     .boxcar-header .nav-out-bar {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .boxcar-header .right-box {
+        width: 100%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
     }
 
-    @media (max-width: 1199px) {
-        .boxcar-header .st-logo img {
-            max-width: 140px;
+    .boxcar-header .right-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Navigation Spacing Fix */
+    .boxcar-header .main-menu .navigation>li,
+    .sticky-header .main-menu .navigation>li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+        padding: 5px 50px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sticky-header .main-menu .navigation>li>a {
+        color: #ffffff !important;
+    }
+
+    .sticky-header .logo img {
+        max-height: unset !important;
+        max-width: 260px !important;
+        height: auto !important;
+        width: 100%;
+    }
+
+    .sticky-header .nav-out-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    /* Mobile Navigation Styling */
+    .mobile-navigation {
+        display: none;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .mobile-navigation a {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Sidebar (Mobile Menu) Styling */
+    .mm-navbar__title {
+        display: none !important;
+    }
+
+    /* Hide "Menu" text */
+    .mm-logo-header img {
+        filter: brightness(0);
+    }
+
+    /* Make sidebar logo black */
+
+    /* Fix Dropdown Arrows Alignment (Inventory Filters) */
+    .drop-menu .select {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-right: 15px;
+    }
+
+    /* Fix Inventory Sidebar "More Filter" Overlap & Width */
+    .wrap-fixed-sidebar {
+        position: fixed !important;
+        /* Ensure fixed positioning */
+        z-index: 2147483647 !important;
+        /* MAX INT to ensure top-most */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        /* KEY FIX: Hide by default */
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .wrap-fixed-sidebar.active {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .widget-sidebar-filter {
+        width: 300px !important;
+        /* Further reduced from 320px */
+        max-width: 85vw !important;
+        right: auto !important;
+        left: 0 !important;
+        /* Move to Left to match Mobile Menu UI */
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        background-color: #ffffff !important;
+        /* Ensure Opaque Background */
+        overflow-y: auto !important;
+        /* Ensure scrollable */
+    }
+
+    /* Sidebar Width Override - FURTHER REDUCED */
+    .mm-menu {
+        width: 65% !important;
+        max-width: 260px !important;
+        /* SIGNIFICANTLY REDUCED WIDTH */
+        background-color: #ffffff !important;
+        /* Fix Transparency */
+        z-index: 99999999 !important;
+        /* Fix Z-Index Overlap */
+    }
+
+    .mm-panels,
+    .mm-panel {
+        background-color: #ffffff !important;
+        /* Ensure Panels are White */
+    }
+
+    /* Reduce Navbar Gap (User Request) */
+    .mm-navbar {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* RESPONSIVE LOGIC: Desktop ONLY above 1040px */
+    @media (min-width: 1041px) {
+
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: flex !important;
         }
-        .boxcar-header .nav-out-bar {
-            display: none;
+
+        /* FORCE NAV CONTENT TO SHOW: Overrides theme hiding logic */
+        .boxcar-header .nav-out-bar .nav,
+        .sticky-header .nav-out-bar .nav {
+            display: block !important;
+        }
+
+        .boxcar-header .main-menu,
+        .sticky-header .main-menu {
+            display: block !important;
+        }
+
+        .mobile-navigation {
+            display: none !important;
+        }
+
+        .boxcar-header .st-logo img {
+            max-width: 260px;
+        }
+
+        /* Ensure right-box is visible on desktop */
+        .boxcar-header .right-box {
+            display: flex !important;
         }
     }
 
-    @media (max-width: 767px) {
+    /* RESPONSIVE LOGIC: Mobile/Tablet at 1040px or less */
+    @media (max-width: 1040px) {
         .boxcar-header .st-logo img {
-            max-width: 120px;
+            max-width: 180px;
+        }
+
+        .sticky-header .logo img {
+            max-width: 180px !important;
+        }
+
+        /* Hide Desktop Nav */
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: none !important;
+        }
+
+        /* FIX: Show Right Box BUT hide everything except Hamburger */
+        .boxcar-header .right-box {
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .boxcar-header .right-box>* {
+            display: none !important;
+        }
+
+        .boxcar-header .right-box>.mobile-navigation {
+            display: flex !important;
+            margin-left: auto !important;
+        }
+
+        /* Show Hamburger */
+        .mobile-navigation {
+            display: flex !important;
+        }
+
+        .sticky-header {
+            padding: 5px 20px !important;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .boxcar-header .st-logo img {
+            max-width: 140px;
+        }
+
+        .sticky-header .logo img {
+            max-width: 140px !important;
         }
     }
 </style>
+
 <body>
 
     <div class="boxcar-wrapper">
@@ -98,117 +334,249 @@
                         <div class="right-box">
                             <div class="mobile-navigation">
                                 <a href="#nav-mobile" title="">
-                                    <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="22" height="2" fill="white" />
-                                        <rect y="9" width="22" height="2" fill="white" />
+                                        <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                 </a>
                             </div>
                         </div>
                     </div>
-                <!-- Mobile Menu  -->
-            </div>
-    </div>
-    <!-- Header Search -->
-    <div class="search-popup">
-        <span class="search-back-drop"></span>
-        <button class="close-search"><span class="fa fa-times"></span></button>
-
-        <div class="search-inner">
-            <form method="post" action="index.html">
-                <div class="form-group">
-                    <input type="search" name="search-field" value="" placeholder="Search..." required="">
-                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <!-- Mobile Menu  -->
                 </div>
-            </form>
-        </div>
-    </div>
-    <!-- End Header Search -->
+            </div>
+            <!-- Header Search -->
+            <div class="search-popup">
+                <span class="search-back-drop"></span>
+                <button class="close-search"><span class="fa fa-times"></span></button>
 
-    <div id="nav-mobile"></div>
-    </header>
-    <!-- End header-section -->
+                <div class="search-inner">
+                    <form method="post" action="index.html">
+                        <div class="form-group">
+                            <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Header Search -->
 
-    <!-- about-inner-one -->
-    <section class="about-inner-one layout-radius">
-        <div class="upper-box">
-            <div class="boxcar-container">
-                <div class="row wow fadeInUp">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="boxcar-title">
-                            <ul class="breadcrumb">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>About Us</span></li>
-                            </ul>
-                            <h2>About Us</h2>
-                            <div class="text">We Value Our Customers
-                                And Deliver an Exceptional
-                                Car Buying Experience
+            <div id="nav-mobile"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Sticky Header -->
+            <div class="sticky-header">
+                <div class="inner-container">
+                    <div class="c-box">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
+                        </div>
+                        <div class="nav-out-bar">
+                            <nav class="nav main-menu">
+                                <ul class="navigation" id="navbar">
+                                    <li><a href="index.html"><span>Home</span></a></li>
+                                    <li><a href="about.html"><span>About</span></a></li>
+                                    <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                    <li><a href="trade-in.html"><span>Trade-In</span></a></li>
+                                    <li><a href="contact.html"><span>Contact</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Mobile Trigger for Sticky Header -->
+                        <div class="mobile-navigation">
+                            <a href="#nav-mobile" title="">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sticky Header -->
+
+        </header>
+        <!-- End header-section -->
+
+        <!-- about-inner-one -->
+        <section class="about-inner-one layout-radius">
+            <div class="upper-box">
+                <div class="boxcar-container">
+                    <div class="row wow fadeInUp">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="boxcar-title">
+                                <ul class="breadcrumb">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><span>About Us</span></li>
+                                </ul>
+                                <h2>About Us</h2>
+                                <div class="text">We Value Our Customers
+                                    And Deliver an Exceptional
+                                    Car Buying Experience
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="content-box">
+                                <div class="text">First Stop Motors is a trusted family-owned car dealership dedicated
+                                    to providing high-quality pre-owned vehicles with honesty, integrity, and complete
+                                    transparency. We believe that purchasing a car should be a smooth and enjoyable
+                                    experience, not a stressful one.
+
+                                </div>
+                                <div class="text">Over the years, we have helped countless customers find the perfect
+                                    vehicle that matches their lifestyle, needs, and budget. Every car we offer is
+                                    carefully inspected and maintained to meet our strict quality standards.
+
+                                </div>
+                                <div class="text">Our team is committed to building long-term relationships through
+                                    personalized support, fair pricing, and professional guidance at every step of the
+                                    journey. When you choose First Stop Motors, you’re not just buying a car — you’re
+                                    joining a family that cares about your satisfaction and driving experience.
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="content-box">
-                            <div class="text">First Stop Motors is a trusted family-owned car dealership dedicated to providing high-quality pre-owned vehicles with honesty, integrity, and complete transparency. We believe that purchasing a car should be a smooth and enjoyable experience, not a stressful one.
-
-                            </div>
-                            <div class="text">Over the years, we have helped countless customers find the perfect vehicle that matches their lifestyle, needs, and budget. Every car we offer is carefully inspected and maintained to meet our strict quality standards.
-
-                            </div>
-                            <div class="text">Our team is committed to building long-term relationships through personalized support, fair pricing, and professional guidance at every step of the journey. When you choose First Stop Motors, you’re not just buying a car — you’re joining a family that cares about your satisfaction and driving experience.
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-        <!-- gallery-sec -->
-        <div class="galler-section">
-            <div class="boxcar-container">
-                <div class="row">
-                    <div class="exp-block col-md-2 col-sm-12">
-                        <div class="inner-box">
-                            <div class="exp-box">
-                                <h2 class="title">45</h2>
-                                <div class="text">Years in
-                                    Business</div>
+            <!-- gallery-sec -->
+            <div class="galler-section">
+                <div class="boxcar-container">
+                    <div class="row">
+                        <div class="exp-block col-md-2 col-sm-12">
+                            <div class="inner-box">
+                                <!-- Removed 45 Years in Business -->
+                                <div class="image-box">
+                                    <figure class="image"><img src="images/resource/about-inner1-1.jpg" alt=""></figure>
+                                </div>
                             </div>
+                        </div>
+                        <div class="image-block style-center col-md-5 col-sm-12">
                             <div class="image-box">
-                                <figure class="image"><img src="images/resource/about-inner1-1.jpg" alt=""></figure>
+                                <figure class="image"><img src="images/resource/about-inner1-2.jpg" alt=""></figure>
                             </div>
                         </div>
-                    </div>
-                    <div class="image-block style-center col-md-5 col-sm-12">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/about-inner1-2.jpg" alt=""></figure>
-                        </div>
-                    </div>
-                    <div class="image-block col-md-5 col-sm-12">
-                        <div class="image-box two">
-                            <figure class="image"><img src="images/resource/about-inner1-3.jpg" alt=""></figure>
-                        </div>
-                        <div class="row box-double-img">
-                            <div class="image-block col-lg-5 col-5">
-                                <div class="image-box">
-                                    <figure class="image"><img src="images/resource/about-inner1-4.jpg" alt=""></figure>
+                        <div class="image-block col-md-5 col-sm-12">
+                            <div class="image-box two">
+                                <figure class="image"><img src="images/resource/about-inner1-3.jpg" alt=""></figure>
+                            </div>
+                            <div class="row box-double-img">
+                                <div class="image-block col-lg-5 col-5">
+                                    <div class="image-box">
+                                        <figure class="image"><img src="images/resource/about-inner1-4.jpg" alt="">
+                                        </figure>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="image-block col-lg-7 col-7">
-                                <div class="image-box">
-                                    <figure class="image"><img src="images/resource/about-inner1-5.jpg" alt=""></figure>
+                                <div class="image-block col-lg-7 col-7">
+                                    <div class="image-box">
+                                        <figure class="image"><img src="images/resource/about-inner1-5.jpg" alt="">
+                                        </figure>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End gallery sec -->
+            <!-- End gallery sec -->
 
-        <!-- why choose us section -->
-        <!-- <div class="why-choose-us-section">
+            <!-- why choose us section -->
+            <!-- <div class="why-choose-us-section">
             <div class="boxcar-container">
                 <div class="boxcar-title wow fadeInUp">
                     <h2 class="title">Why Choose Us?</h2>
@@ -350,9 +718,9 @@
                 </div>
             </div>
         </div> -->
-        <!-- End why choose us section -->
-        <!-- pricing section -->
-        <!-- <div class="boxcar-pricing-section pb-0 pt-0">
+            <!-- End why choose us section -->
+            <!-- pricing section -->
+            <!-- <div class="boxcar-pricing-section pb-0 pt-0">
             <div class="large-container">
                 <div class="row g-0">
 \                    <div class="image-column col-lg-6 col-md-6 col-sm-12">
@@ -399,17 +767,17 @@
                 </div>
             </div>
         </div> -->
-        <!-- End pricing section -->
+            <!-- End pricing section -->
 
-        <!-- Fun Fact Section -->
-        <!-- End Fun Fact Section-->
+            <!-- Fun Fact Section -->
+            <!-- End Fun Fact Section-->
 
-        <!-- brand section -->
-        <div class="boxcar-brand-section">
-            <div class="boxcar-container">
-                <div class="boxcar-title">
-                    <h2 class="wow fadeInUp">Explore Our Premium Brands</h2>
-                    <!-- <a href="about.html#" class="btn-title">Show All Brands<svg xmlns="http://www.w3.org/2000/svg"
+            <!-- brand section -->
+            <div class="boxcar-brand-section">
+                <div class="boxcar-container">
+                    <div class="boxcar-title">
+                        <h2 class="wow fadeInUp">Explore Our Premium Brands</h2>
+                        <!-- <a href="about.html#" class="btn-title">Show All Brands<svg xmlns="http://www.w3.org/2000/svg"
                             width="14" height="14" viewbox="0 0 14 14" fill="none">
                             <g clip-path="url(#clip0_601_3199)">
                                 <path
@@ -422,87 +790,87 @@
                                 </clippath>
                             </defs>
                         </svg></a> -->
-                </div>
-                <div class="row">
-                    <!-- cars-block -->
-                    <div class="cars-block col-lg-2 col-md-6 col-sm-6">
-                        <div class="inner-box wow fadeInUp">
-                            <div class="image-box">
-                                <figure class="image"><a href="about.html#"><img src="images/resource/brand-1.png"
-                                            alt=""></a></figure>
-                            </div>
-                            <div class="content-box">
-                                <h6 class="title"><a href="about.html#">Audi</a></h6>
+                    </div>
+                    <div class="row">
+                        <!-- cars-block -->
+                        <div class="cars-block col-lg-2 col-md-6 col-sm-6">
+                            <div class="inner-box wow fadeInUp">
+                                <div class="image-box">
+                                    <figure class="image"><a href="about.html#"><img src="images/resource/brand-1.png"
+                                                alt=""></a></figure>
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title"><a href="about.html#">Audi</a></h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- cars-block -->
-                    <div class="cars-block col-lg-2 col-md-6 col-sm-6">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="100ms">
-                            <div class="image-box">
-                                <figure class="image"><a href="about.html#"><img src="images/resource/brand-2.png"
-                                            alt=""></a></figure>
-                            </div>
-                            <div class="content-box">
-                                <h6 class="title"><a href="about.html#">BMW</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- cars-block -->
-                    <div class="cars-block col-lg-2 col-md-6 col-sm-6">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="200ms">
-                            <div class="image-box">
-                                <figure class="image"><a href="about.html#"><img src="images/resource/brand-3.png"
-                                            alt=""></a></figure>
-                            </div>
-                            <div class="content-box">
-                                <h6 class="title"><a href="about.html#">ford</a></h6>
+                        <!-- cars-block -->
+                        <div class="cars-block col-lg-2 col-md-6 col-sm-6">
+                            <div class="inner-box wow fadeInUp" data-wow-delay="100ms">
+                                <div class="image-box">
+                                    <figure class="image"><a href="about.html#"><img src="images/resource/brand-2.png"
+                                                alt=""></a></figure>
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title"><a href="about.html#">BMW</a></h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- cars-block -->
-                    <div class="cars-block col-lg-2 col-md-6 col-sm-6">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="300ms">
-                            <div class="image-box">
-                                <figure class="image"><a href="about.html#"><img src="images/resource/brand-4.png"
-                                            alt=""></a></figure>
-                            </div>
-                            <div class="content-box">
-                                <h6 class="title"><a href="about.html#">Mercedes Benz</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- cars-block -->
-                    <div class="cars-block col-lg-2 col-md-6 col-sm-6">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="400ms">
-                            <div class="image-box">
-                                <figure class="image"><a href="about.html#"><img src="images/resource/brand-5.png"
-                                            alt=""></a></figure>
-                            </div>
-                            <div class="content-box">
-                                <h6 class="title"><a href="about.html#">Peugeot</a></h6>
+                        <!-- cars-block -->
+                        <div class="cars-block col-lg-2 col-md-6 col-sm-6">
+                            <div class="inner-box wow fadeInUp" data-wow-delay="200ms">
+                                <div class="image-box">
+                                    <figure class="image"><a href="about.html#"><img src="images/resource/brand-3.png"
+                                                alt=""></a></figure>
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title"><a href="about.html#">ford</a></h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- cars-block -->
-                    <div class="cars-block col-lg-2 col-md-6 col-sm-6">
-                        <div class="inner-box wow fadeInUp" data-wow-delay="500ms">
-                            <div class="image-box">
-                                <figure class="image"><a href="about.html#"><img src="images/resource/brand-6.png"
-                                            alt=""></a></figure>
+                        <!-- cars-block -->
+                        <div class="cars-block col-lg-2 col-md-6 col-sm-6">
+                            <div class="inner-box wow fadeInUp" data-wow-delay="300ms">
+                                <div class="image-box">
+                                    <figure class="image"><a href="about.html#"><img src="images/resource/brand-4.png"
+                                                alt=""></a></figure>
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title"><a href="about.html#">Mercedes Benz</a></h6>
+                                </div>
                             </div>
-                            <div class="content-box">
-                                <h6 class="title"><a href="about.html#">Volkswagen</a></h6>
+                        </div>
+                        <!-- cars-block -->
+                        <div class="cars-block col-lg-2 col-md-6 col-sm-6">
+                            <div class="inner-box wow fadeInUp" data-wow-delay="400ms">
+                                <div class="image-box">
+                                    <figure class="image"><a href="about.html#"><img src="images/resource/brand-5.png"
+                                                alt=""></a></figure>
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title"><a href="about.html#">Peugeot</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- cars-block -->
+                        <div class="cars-block col-lg-2 col-md-6 col-sm-6">
+                            <div class="inner-box wow fadeInUp" data-wow-delay="500ms">
+                                <div class="image-box">
+                                    <figure class="image"><a href="about.html#"><img src="images/resource/brand-6.png"
+                                                alt=""></a></figure>
+                                </div>
+                                <div class="content-box">
+                                    <h6 class="title"><a href="about.html#">Volkswagen</a></h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End brand section -->
+            <!-- End brand section -->
 
-        <!-- boxcar-team-section -->
-        <!-- <div class="boxcar-team-section-two pt-0">
+            <!-- boxcar-team-section -->
+            <!-- <div class="boxcar-team-section-two pt-0">
             <div class="boxcar-container">
                 <div class="boxcar-title wow fadeInUp">
                     <h2>Our Team</h2>
@@ -580,10 +948,10 @@
             </div>
         </div>
         </div> -->
-        <!-- End boxcar-team-section -->
+            <!-- End boxcar-team-section -->
 
-        <!-- boxcar-testimonial-section-four -->
-        <!-- <div class="boxcar-testimonial-section-four v1 pt-0">
+            <!-- boxcar-testimonial-section-four -->
+            <!-- <div class="boxcar-testimonial-section-four v1 pt-0">
             <div class="large-container">
                 <div class="right-box">
                     <div class="boxcar-title">
@@ -691,204 +1059,218 @@
                 </div>
             </div>
         </div> -->
-        <!-- End boxcar-testimonial-section-four -->
+            <!-- End boxcar-testimonial-section-four -->
 
-        <!-- faq-section -->
-        <!-- faq-section -->
-<div class="faqs-section pt-0">
-    <div class="inner-container">
-        <!-- FAQ Column -->
-        <div class="faq-column wow fadeInUp" data-wow-delay="400ms">
-            <div class="inner-column">
-                <div class="boxcar-title text-center">
-                    <h2 class="title">See Frequently Asked Questions</h2>
+            <!-- faq-section -->
+            <!-- faq-section -->
+            <div class="faqs-section pt-0">
+                <div class="inner-container">
+                    <!-- FAQ Column -->
+                    <div class="faq-column wow fadeInUp" data-wow-delay="400ms">
+                        <div class="inner-column">
+                            <div class="boxcar-title text-center">
+                                <h2 class="title">See Frequently Asked Questions</h2>
+                            </div>
+                            <ul class="widget-accordion wow fadeInUp">
+
+                                <!--Block 1-->
+                                <li class="accordion block active-block">
+                                    <div class="acc-btn active">Is Every Car Listed on Your Website Owned by First Stop
+                                        Motors?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content current">
+                                        <div class="content">
+                                            <div class="text">
+                                                Yes, every vehicle displayed in our inventory is owned, inspected, and
+                                                quality-checked
+                                                by First Stop Motors. We do not list cars from third parties without
+                                                verification —
+                                                ensuring transparency and trust.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 2-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">How Do You Select the Cars That You Sell?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                We carefully evaluate each vehicle based on service history, engine
+                                                condition,
+                                                mileage, accident records, and overall performance. Only cars that pass
+                                                our
+                                                multi-point inspection process become part of our inventory.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 3-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">Can I Reserve or Save My Favorite Cars to View Later?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Yes, you can. You can shortlist vehicles you like and revisit them
+                                                anytime. If a
+                                                shortlisted car is booked or sold, we will notify you immediately.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 4-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">Can I Be Notified When Cars Are Added to the Inventory?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Absolutely! You can subscribe for updates, and we’ll notify you by
+                                                WhatsApp, call, or
+                                                email whenever a matching vehicle arrives.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 5-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">Do You Offer Assistance in Choosing the Right Car Within My
+                                        Budget?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Yes, our experts provide personalized guidance based on your needs —
+                                                whether you’re
+                                                looking for family, luxury, fuel-efficient, or first-time buyer options.
+                                                We help you
+                                                find the best fit within your budget.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 6-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">Do You Provide Test Drives?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Yes, we offer scheduled test drives so you can experience the vehicle
+                                                firsthand before
+                                                making a decision.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 7-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">What Documents Do I Need to Purchase a Car?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                For most purchases, you’ll need:<br><br>
+                                                • Valid ID proof<br>
+                                                • Address proof<br>
+                                                • PAN card<br><br>
+                                                Our team will guide you through all required paperwork.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 8-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">Do You Offer Financing or Loan Assistance?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Yes, we offer financing guidance and assistance through trusted banking
+                                                and loan
+                                                partners to help make your purchase easy and affordable.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 9-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">Do You Provide After-Sales Support?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Yes, we continue to support our customers even after delivery. We assist
+                                                with service,
+                                                warranty, and vehicle documentation whenever needed.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--Block 10-->
+                                <li class="accordion block">
+                                    <div class="acc-btn">What If the Car I Purchased Has a Problem?
+                                        <div class="icon fa fa-plus"></div>
+                                    </div>
+                                    <div class="acc-content">
+                                        <div class="content">
+                                            <div class="text">
+                                                Customer satisfaction is our priority. If any genuine issue arises
+                                                post-purchase,
+                                                our team will work with you to resolve it quickly and professionally.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <ul class="widget-accordion wow fadeInUp">
-
-                    <!--Block 1-->
-                    <li class="accordion block active-block">
-                        <div class="acc-btn active">Is Every Car Listed on Your Website Owned by First Stop Motors?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content current">
-                            <div class="content">
-                                <div class="text">
-                                    Yes, every vehicle displayed in our inventory is owned, inspected, and quality-checked 
-                                    by First Stop Motors. We do not list cars from third parties without verification — 
-                                    ensuring transparency and trust.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 2-->
-                    <li class="accordion block">
-                        <div class="acc-btn">How Do You Select the Cars That You Sell?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    We carefully evaluate each vehicle based on service history, engine condition, 
-                                    mileage, accident records, and overall performance. Only cars that pass our 
-                                    multi-point inspection process become part of our inventory.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 3-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Can I Reserve or Save My Favorite Cars to View Later?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Yes, you can. You can shortlist vehicles you like and revisit them anytime. If a 
-                                    shortlisted car is booked or sold, we will notify you immediately.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 4-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Can I Be Notified When Cars Are Added to the Inventory?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Absolutely! You can subscribe for updates, and we’ll notify you by WhatsApp, call, or 
-                                    email whenever a matching vehicle arrives.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 5-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Do You Offer Assistance in Choosing the Right Car Within My Budget?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Yes, our experts provide personalized guidance based on your needs — whether you’re 
-                                    looking for family, luxury, fuel-efficient, or first-time buyer options. We help you 
-                                    find the best fit within your budget.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 6-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Do You Provide Test Drives?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Yes, we offer scheduled test drives so you can experience the vehicle firsthand before 
-                                    making a decision.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 7-->
-                    <li class="accordion block">
-                        <div class="acc-btn">What Documents Do I Need to Purchase a Car?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    For most purchases, you’ll need:<br><br>
-                                    • Valid ID proof<br>
-                                    • Address proof<br>
-                                    • PAN card<br><br>
-                                    Our team will guide you through all required paperwork.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 8-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Do You Offer Financing or Loan Assistance?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Yes, we offer financing guidance and assistance through trusted banking and loan 
-                                    partners to help make your purchase easy and affordable.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 9-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Do You Provide After-Sales Support?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Yes, we continue to support our customers even after delivery. We assist with service, 
-                                    warranty, and vehicle documentation whenever needed.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!--Block 10-->
-                    <li class="accordion block">
-                        <div class="acc-btn">What If the Car I Purchased Has a Problem?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">
-                                    Customer satisfaction is our priority. If any genuine issue arises post-purchase, 
-                                    our team will work with you to resolve it quickly and professionally.
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
             </div>
-        </div>
-    </div>
-</div>
-<!-- End faqs-section -->
+            <!-- End faqs-section -->
 
-        <!-- End faqs-section -->
-    </section>
-    <!-- End about-inner-one -->
+            <!-- End faqs-section -->
+        </section>
+        <!-- End about-inner-one -->
 
-    <!-- main footer -->
+        <!-- main footer -->
         <footer class="boxcar-footer footer-style-one v1 cus-st-1">
             <div class="footer-top">
                 <div class="boxcar-container">
                     <div class="right-box">
                         <div class="top-left wow fadeInUp">
-                            <!-- <h6 class="title">Join FIRST STOP MOTORS</h6>
-                            <div class="text">Receive pricing updates, shopping tips & more!</div> -->
+                            <h6 class="title">Join FIRST STOP MOTORS</h6>
+                            <div class="text">Receive pricing updates, shopping tips & more!</div>
                         </div>
                         <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
-                            <form method="post" action="contact.html#">
-                                <!-- <div class="form-group">
+                            <form method="post" action="index.html">
+                                <div class="form-group">
                                     <input type="email" name="email" class="email" value=""
                                         placeholder="Your e-mail address" required="">
                                     <button type="button" class="theme-btn btn-style-one hover-light"><span
                                             class="btn-title">Sign Up</span></button>
-                                </div> -->
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -897,96 +1279,53 @@
             <div class="widgets-section">
                 <div class="boxcar-container">
                     <div class="row">
-                        <!-- Footer COlumn -->
-                        <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <div class="footer-widget links-widget wow fadeInUp">
-                                        <h4 class="widget-title">Useful Links</h4>
-                                        <div class="widget-content">
-                                            <ul class="user-links style-two">
-                                                <li><a href="contact.html#">About Us</a></li>
-                                                <!-- <li><a href="contact.html#">Careers</a></li> -->
-                                                <!-- <li><a href="contact.html#">Blog</a></li> -->
-                                                <!-- <li><a href="contact.html#">FAQs</a></li> -->
-                                                <!-- <li><a href="contact.html#">Finance</a></li>    -->
-                                                <li><a href="contact.html#">Contact Us</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                        <!-- Footer Column: Logo & Contact -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget logo-widget wow fadeInUp">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
-                                    <h4 class="widget-title">Quick Links</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Get in Touch</a></li>
-                                            <li><a href="contact.html#">Help center</a></li>
-                                            <li><a href="contact.html#">Live chat</a></li>
-                                            <li><a href="contact.html#">How it works</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div> -->
-                                </div>
-                                <!-- <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="200ms">
-                                    <h4 class="widget-title">Our Brands</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Aston Martin</a></li>
-                                            <li><a href="contact.html#">Audi</a></li>
-                                            <li><a href="contact.html#">Bentley</a></li>
-                                            <li><a href="contact.html#">BMW</a></li>
-                                            <li><a href="contact.html#">Bugatti</a></li>
-                                            <li><a href="contact.html#">Ferrari</a></li>
-                                            <li><a href="contact.html#">Jaguar</a></li>
-                                            <li><a href="contact.html#">Lamborghini</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div>
-                            </div> -->
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="300ms">
-                                    <h4 class="widget-title">Vehicles Type</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Pickup</a></li>
-                                            <li><a href="contact.html#">Coup</a></li>
-                                            <li><a href="contact.html#">Family MPV</a></li>
-                                            <li><a href="contact.html#">Sedan</a></li>
-                                            <li><a href="contact.html#">SUVs</a></li>
-                                            <li><a href="contact.html#">Sport Coupe</a></li>
-                                            <li><a href="contact.html#">Convertible</a></li>
-                                            <li><a href="contact.html#">Wagon</a></li>
-                                        </ul>
-                                    </div>
-                                </div> -->
+                                <div class="text">
+                                    1234 Street Name, City, State, Zip Code<br>
+                                    <a href="mailto:info@firststopmotors.com">info@firststopmotors.com</a><br>
+                                    <a href="tel:+11234567890">+1 123 456 7890</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- footer column -->
-                        <div class="footer-column col-lg-3 col-md-6 col-sm-12">
-                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="400ms">
-                                <!-- <h4 class="widget-title">Vehicles Type</h4> -->
+
+                        <!-- Footer Column: Useful Links -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget links-widget wow fadeInUp">
+                                <h4 class="widget-title">Useful Links</h4>
                                 <div class="widget-content">
-                                    <!-- <a href="contact.html#" class="store">
-                                    <img src="images/resource/apple.png">
-                                    <span>Download on the</span>
-                                    <h6 class="title">Apple Store</h6>
-                                </a>
-                                <a href="contact.html#" class="store two">
-                                    <img src="images/resource/play.png">
-                                    <span>Get in on</span>
-                                    <h6 class="title">Google Play</h6>
-                                </a> -->
+                                    <ul class="user-links style-two">
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="inventory-list-01.html">Inventory</a></li>
+                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="trade-in.html">Trade-In</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column: Connect With Us & Hours -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="200ms">
+                                <h4 class="widget-title">Connect With Us</h4>
+                                <div class="widget-content">
                                     <div class="social-icons">
-                                        <h6 class="title">Connect With Us</h6>
                                         <ul>
-                                            <li><a href="contact.html#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="contact.html#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="contact.html#"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="contact.html#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                         </ul>
+                                    </div>
+                                    <div class="text" style="margin-top: 20px;">
+                                        <h6 class="title" style="color:white; margin-bottom:10px;">Working Hours</h6>
+                                        Monday - Saturday: 10:00 AM - 06:00 PM<br>
+                                        Sunday: Closed
                                     </div>
                                 </div>
                             </div>
@@ -1000,7 +1339,8 @@
                     <div class="inner-container">
                         <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
                         <div class="developed-by wow fadeInUp" style="margin-top:10px;color: white;">
-                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener" style="color: red;">BigInIT
+                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener"
+                                style="color: red;">BigInIT
                                 Technologies LLP</a>
                         </div>
                     </div>
@@ -1027,6 +1367,154 @@
     <script src="js/knob.js"></script>
     <script src="js/mmenu.js"></script>
     <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebar = document.querySelector(".wrap-fixed-sidebar");
+            if (sidebar && document.body) {
+                document.body.appendChild(sidebar);
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "left";
+                    logoDiv.style.display = "flex"; // Use Flexbox
+                    logoDiv.style.justifyContent = "flex-start"; // Force Left
+                    logoDiv.style.alignItems = "center";
+                    logoDiv.style.padding = "40px 0px 20px 0px"; // Top 70, Bottom 20, Left 20
+                    logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+
+            // REMOVE mm-wrapper_opening CLASS (User Request)
+            // This class manages the opening animation but user wants it gone
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === "class") {
+                        var target = mutation.target;
+                        if (target.classList.contains("mm-wrapper_opening")) {
+                            target.classList.remove("mm-wrapper_opening");
+                            // console.log("Removed mm-wrapper_opening from", target);
+                        }
+                    }
+                });
+            });
+
+            // Observe html and body and wrapper
+            observer.observe(document.documentElement, { attributes: true });
+            observer.observe(document.body, { attributes: true });
+            // Also check initial state
+            document.documentElement.classList.remove("mm-wrapper_opening");
+            document.body.classList.remove("mm-wrapper_opening");
+        });
+    </script>
+
 </body>
 
 </html>

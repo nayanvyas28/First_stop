@@ -18,86 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
-        /* Hamburger styles */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            z-index: 1201;
-        }
-        .hamburger span {
-            height: 4px;
-            width: 100%;
-            background: #222;
-            margin: 4px 0;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        /* Mobile nav overlay */
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 1200;
-        }
-
-        /* Mobile nav menu */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 80vw;
-            max-width: 320px;
-            height: 100vh;
-            background: #fff;
-            box-shadow: -2px 0 8px rgba(0,0,0,0.08);
-            z-index: 1202;
-            transform: translateX(100%);
-            transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-            padding: 40px 24px 24px 24px;
-        }
-        .mobile-nav.open {
-            display: block;
-            transform: translateX(0);
-        }
-        .mobile-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .mobile-nav ul li {
-            margin-bottom: 24px;
-        }
-        .mobile-nav ul li:last-child {
-            margin-bottom: 0;
-        }
-        .mobile-nav ul li a {
-            color: #222;
-            font-size: 1.1rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .mobile-nav ul li a:hover {
-            color: #405FF2;
-        }
-
-        @media (max-width: 991px) {
-            .boxcar-header .nav-out-bar {
-                display: none !important;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
     .boxcar-header .c-box {
         display: flex;
         justify-content: space-between;
@@ -106,19 +31,23 @@
     }
 
     .boxcar-header .st-logo {
-        flex: 0 0 auto;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     .boxcar-header .st-logo img {
-        max-width: 180px;
+        max-width: 260px;
+        width: 100%;
         height: auto;
+        display: block;
+        margin: 0 auto;
     }
 
     .boxcar-header .nav-out-bar {
-        flex: 1;
+        width: 100%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -126,136 +55,408 @@
 
     .boxcar-header .right-box {
         display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Navigation Spacing Fix */
+    .boxcar-header .main-menu .navigation>li,
+    .sticky-header .main-menu .navigation>li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+        padding: 5px 50px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sticky-header .main-menu .navigation>li>a {
+        color: #ffffff !important;
+    }
+
+    .sticky-header .logo img {
+        max-height: unset !important;
+        max-width: 260px !important;
+        height: auto !important;
+        width: 100%;
+    }
+
+    .sticky-header .nav-out-bar {
+        display: flex;
         justify-content: flex-end;
         align-items: center;
     }
 
-    @media (max-width: 1199px) {
-        .boxcar-header .c-box {
-            justify-content: flex-start;
+    /* Mobile Navigation Styling */
+    .mobile-navigation {
+        display: none;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .mobile-navigation a {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Sidebar (Mobile Menu) Styling */
+    .mm-navbar__title {
+        display: none !important;
+    }
+
+    /* Hide "Menu" text */
+    .mm-logo-header img {
+        filter: brightness(0);
+    }
+
+    /* Make sidebar logo black */
+
+    /* Fix Dropdown Arrows Alignment (Inventory Filters) */
+    .drop-menu .select {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-right: 15px;
+    }
+
+    /* Fix Inventory Sidebar "More Filter" Overlap & Width */
+    .wrap-fixed-sidebar {
+        position: fixed !important;
+        /* Ensure fixed positioning */
+        z-index: 2147483647 !important;
+        /* MAX INT to ensure top-most */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        /* KEY FIX: Hide by default */
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .wrap-fixed-sidebar.active {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .widget-sidebar-filter {
+        width: 300px !important;
+        /* Further reduced from 320px */
+        max-width: 85vw !important;
+        right: auto !important;
+        left: 0 !important;
+        /* Move to Left to match Mobile Menu UI */
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        background-color: #ffffff !important;
+        /* Ensure Opaque Background */
+        overflow-y: auto !important;
+        /* Ensure scrollable */
+    }
+
+    /* Sidebar Width Override - FURTHER REDUCED */
+    .mm-menu {
+        width: 65% !important;
+        max-width: 260px !important;
+        /* SIGNIFICANTLY REDUCED WIDTH */
+        background-color: #ffffff !important;
+        /* Fix Transparency */
+        z-index: 99999999 !important;
+        /* Fix Z-Index Overlap */
+    }
+
+    .mm-panels,
+    .mm-panel {
+        background-color: #ffffff !important;
+        /* Ensure Panels are White */
+    }
+
+    /* Reduce Navbar Gap (User Request) */
+    .mm-navbar {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 20px !important;
+        padding-bottom: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* RESPONSIVE LOGIC: Desktop ONLY above 1040px */
+    @media (min-width: 1041px) {
+
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: flex !important;
         }
 
-        .boxcar-header .st-logo {
-            flex: 0 0 auto;
-            justify-content: flex-start !important;
-            margin-right: auto;
+        /* FORCE NAV CONTENT TO SHOW: Overrides theme hiding logic */
+        .boxcar-header .nav-out-bar .nav,
+        .sticky-header .nav-out-bar .nav {
+            display: block !important;
         }
 
+        .boxcar-header .main-menu,
+        .sticky-header .main-menu {
+            display: block !important;
+        }
+
+        .mobile-navigation {
+            display: none !important;
+        }
+
+        .boxcar-header .st-logo img {
+            max-width: 260px;
+        }
+
+        /* Ensure right-box is visible on desktop */
+        .boxcar-header .right-box {
+            display: flex !important;
+        }
+    }
+
+    /* RESPONSIVE LOGIC: Mobile/Tablet at 1040px or less */
+    @media (max-width: 1040px) {
+        .boxcar-header .st-logo img {
+            max-width: 180px;
+        }
+
+        .sticky-header .logo img {
+            max-width: 180px !important;
+        }
+
+        /* Hide Desktop Nav */
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: none !important;
+        }
+
+        /* FIX: Show Right Box BUT hide everything except Hamburger */
+        .boxcar-header .right-box {
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .boxcar-header .right-box>* {
+            display: none !important;
+        }
+
+        .boxcar-header .right-box>.mobile-navigation {
+            display: flex !important;
+            margin-left: auto !important;
+        }
+
+        /* Show Hamburger */
+        .mobile-navigation {
+            display: flex !important;
+        }
+
+        .sticky-header {
+            padding: 5px 20px !important;
+        }
+    }
+
+    @media (max-width: 575px) {
         .boxcar-header .st-logo img {
             max-width: 140px;
         }
 
-        .boxcar-header .nav-out-bar {
-            display: none;
+        .sticky-header .logo img {
+            max-width: 140px !important;
         }
-    }
-
-    @media (max-width: 767px) {
-        .boxcar-header .st-logo img {
-            max-width: 120px;
-        }
-    }
-
-    .layout-search {
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-
-    .layout-search .search-box {
-        display: flex;
-        align-items: center;
-        padding: 6px 12px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(8px);
-        height: 32px;
-    }
-
-    .layout-search .search-box svg.icon {
-        margin-right: 8px;
-    }
-
-    .layout-search .search-box input {
-        border: none;
-        background: transparent;
-        outline: none;
-        color: white;
-        font-size: 14px;
-        width: 80px;
-    }
-
-    .box-content-search {
-        position: absolute;
-        top: 50px;
-        right: 0;
-        width: 320px;
     }
 </style>
 
 <body>
 
     <!-- <div class="boxcar-wrapper"> -->
-<!-- Main Header-->
-        <header class="boxcar-header header-style-v9">
-            <div class="header-inner">
-                <div class="inner-container">
-                    <!-- Main box -->
-                    <div class="c-box">
-                        <div class="logo st-logo">
-                            <a href="index.html">
-                                <img src="images/logo.svg" alt="" title="FIRST STOP MOTORS">
-                            </a>
-                        </div>
-                        <div class="nav-out-bar">
-                            <nav class="nav main-menu">
-                                <ul class="navigation" id="navbar">
-                                    <li><a href="index.html"><span>Home</span></a></li>
-                                    <li><a href="about.html"><span>About</span></a></li>
-                                    <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
-                                    <li><a href="trade-in.html"><span>Trade-In</span></a></li>
-                                    <li><a href="contact.html"><span>Contact</span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="hamburger" id="hamburger-menu" aria-label="Open navigation" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
+    <!-- Main Header-->
+    <header class="boxcar-header header-style-v9">
+        <div class="header-inner">
+            <div class="inner-container">
+                <!-- Main box -->
+                <div class="c-box">
+                    <div class="logo st-logo">
+                        <a href="index.html">
+                            <img src="images/logo.svg" alt="" title="FIRST STOP MOTORS">
+                        </a>
                     </div>
-                    <!-- Mobile Menu  -->
+                    <div class="nav-out-bar">
+                        <nav class="nav main-menu">
+                            <ul class="navigation" id="navbar">
+                                <li><a href="index.html"><span>Home</span></a></li>
+                                <li><a href="about.html"><span>About</span></a></li>
+                                <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                <li><a href="trade-in.html"><span>Trade-In</span></a></li>
+                                <li><a href="contact.html"><span>Contact</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="mobile-navigation">
+                        <a href="#nav-mobile" title="">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile Menu  -->
+            </div>
+        </div>
+
+        <!-- Header Search -->
+        <div class="search-popup">
+            <span class="search-back-drop"></span>
+            <button class="close-search"><span class="fa fa-times"></span></button>
+
+            <div class="search-inner">
+                <form method="post" action="index.html">
+                    <div class="form-group">
+                        <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End Header Search -->
+
+        <div id="nav-mobile"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Sticky Header -->
+        <div class="sticky-header">
+            <div class="inner-container">
+                <div class="c-box">
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
+                    </div>
+                    <div class="nav-out-bar">
+                        <nav class="nav main-menu">
+                            <ul class="navigation" id="navbar">
+                                <li><a href="index.html"><span>Home</span></a></li>
+                                <li><a href="about.html"><span>About</span></a></li>
+                                <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                <li><a href="trade-in.html"><span>Trade-In</span></a></li>
+                                <li><a href="contact.html"><span>Contact</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Mobile Trigger for Sticky Header -->
+                    <div class="mobile-navigation">
+                        <a href="#nav-mobile" title="">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </div>
+        <!-- End Sticky Header -->
 
-            <!-- Header Search -->
-            <div class="search-popup">
-                <span class="search-back-drop"></span>
-                <button class="close-search"><span class="fa fa-times"></span></button>
-
-                <div class="search-inner">
-                    <form method="post" action="index.html">
-                        <div class="form-group">
-                            <input type="search" name="search-field" value="" placeholder="Search..." required="">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- End Header Search -->
-
-            <div id="nav-mobile"></div>
-                <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-                <nav class="mobile-nav" id="mobile-nav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="inventory-list-01.html">Inventory</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-        </header>
-        <!-- End header-section -->
+    </header>
+    <!-- End header-section -->
 
 
     <section class="inventory-pager style-1">
@@ -263,29 +464,18 @@
             style="background-image:url(images/background/bg-1.jpg); background-repeat:no-repeat;background-position:center center;background-size:cover;height:auto;"
             class="boxcar-container">
             <form class="inventory-form">
-                <div class="form_boxes line-r">
-                    <div class="drop-menu">
-                        <div class="select">
-                            <span>Used Cars</span>
-                            <i class="fa fa-angle-down"></i>
-                        </div>
-                        <input type="hidden" name="gender">
-                        <ul class="dropdown" style="display: none;">
-                            <li>Audi</li>
-                            <li>Honda</li>
-                        </ul>
-                    </div>
-                </div>
+
                 <div class="form_boxes line-r">
                     <div class="drop-menu">
                         <div class="select">
                             <span>Any Makes</span>
                             <i class="fa fa-angle-down"></i>
                         </div>
-                        <input type="hidden" name="gender">
+                        <input type="hidden" name="make">
                         <ul class="dropdown" style="display: none;">
-                            <li>Audi</li>
-                            <li>Honda</li>
+                            <li id="ford">Ford</li>
+                            <li id="jeep">Jeep</li>
+                            <li id="acura">Acura</li>
                         </ul>
                     </div>
                 </div>
@@ -295,10 +485,11 @@
                             <span>Any Models</span>
                             <i class="fa fa-angle-down"></i>
                         </div>
-                        <input type="hidden" name="gender">
+                        <input type="hidden" name="model">
                         <ul class="dropdown" style="display: none;">
-                            <li>A3</li>
-                            <li>Accord</li>
+                            <li id="f-150">F-150</li>
+                            <li id="cherokee">Cherokee</li>
+                            <li id="mdx">MDX</li>
                         </ul>
                     </div>
                 </div>
@@ -308,10 +499,15 @@
                             <span>Any Price</span>
                             <i class="fa fa-angle-down"></i>
                         </div>
-                        <input type="hidden" name="gender">
+                        <input type="hidden" name="max_price">
                         <ul class="dropdown" style="display: none;">
-                            <li>200$</li>
-                            <li>300$</li>
+                            <li id="10000">$10,000</li>
+                            <li id="15000">$15,000</li>
+                            <li id="20000">$20,000</li>
+                            <li id="25000">$25,000</li>
+                            <li id="30000">$30,000</li>
+                            <li id="40000">$40,000</li>
+                            <li id="50000">$50,000</li>
                         </ul>
                     </div>
                 </div>
@@ -320,7 +516,7 @@
                             alt="" /> More Filters</a>
                 </div>
                 <div class="form-submit">
-                    <button type="submit" class="theme-btn"><i class="flaticon-search"></i>Search 9451 Cars</button>
+                    <button type="submit" class="theme-btn"><i class="flaticon-search"></i>Search Cars</button>
                 </div>
             </form>
         </div>
@@ -337,372 +533,177 @@
             </div>
             <div class="inventory-sidebar">
                 <!-- Location filter removed -->
-                        <div class="col-lg-7">
-                            <div class="form_boxes">
-                                <label>Search within</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>200 KM</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>200 KM</li>
-                                        <li>200 KM</li>
-                                        <li>200 KM</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="form_boxes">
-                                <label>Zip Code</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>02111</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>02111</li>
-                                        <li>02111</li>
-                                        <li>02111</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Condition</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>New and Used</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="categories-box">
-                                <h6 class="title">Type</h6>
-                                <div class="cheak-box">
-                                    <label class="contain">SUV (1,456)
-                                        <input type="checkbox" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Sedan (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Hatchback (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Coupe (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Convertible (1,456)
-                                        <input type="checkbox" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Make</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>Add Make</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Model</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>Add Model</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form_boxes">
-                                <label>Min year</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>2019</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>2020</li>
-                                        <li>2021</li>
-                                        <li>2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form_boxes">
-                                <label>Max year</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>2023</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>2020</li>
-                                        <li>2021</li>
-                                        <li>2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Mileage</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>Any Mileage</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Drive Type</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>Any Type</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="price-box">
-                                <h6 class="title">Price</h6>
-                                <form class="row g-0">
-                                    <div class="form-column col-lg-6">
-                                        <div class="form_boxes">
-                                            <label>Min price</label>
-                                            <div class="drop-menu">
-                                                <!-- <input type="text" id="slider-range-value1" name="gender"> -->
-                                                <span id="slider-range-value1"></span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-column v2 col-lg-6">
-                                        <div class="form_boxes">
-                                            <label>Max price</label>
-                                            <div class="drop-menu">
-                                                <span id="slider-range-value2"></span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="widget-price">
-
-                                    <div id="slider-val"></div>
-                                    <div class="slider-labels">
-                                        <input type="hidden" name="min-value" value="">
-                                        <input type="hidden" name="max-value" value="">
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="categories-box border-none-bottom">
-                                <h6 class="title">Transmission</h6>
-                                <div class="cheak-box">
-                                    <label class="contain">Automatic (1,456)
-                                        <input type="checkbox" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Manual (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">CVT (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="categories-box border-none-bottom">
-                                <h6 class="title">Fuel Type</h6>
-                                <div class="cheak-box">
-                                    <label class="contain">Diesel (1,456)
-                                        <input type="checkbox" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Gasoline (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Hybird (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Electric (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Exterior Color</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>Blue</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Interior Color</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>Black</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Doors</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>3</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form_boxes">
-                                <label>Cylinders</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>6</span>
-                                        <i class="fa fa-angle-down"></i>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>New York</li>
-                                        <li>Los Vegas</li>
-                                        <li>California</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="categories-box border-none-bottom m-0">
-                                <h6 class="title">Key Features</h6>
-                                <div class="cheak-box">
-                                    <label class="contain">360-degree camera (1,456)
-                                        <input type="checkbox" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Bluetooth (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Keyless start (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Navigation System (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Active head restraints (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Brake assist (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="contain">Parking assist systems (1,456)
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <a href="inventory-list-01.html#" title="" class="show-more">Show 8 more</a>
-                            </div>
+                <!-- Removed Search within, Zip Code, Condition -->
+                <div class="col-lg-12">
+                    <div class="categories-box">
+                        <h6 class="title">Body Type</h6>
+                        <div class="cheak-box">
+                            <label class="contain">SUV
+                                <input type="checkbox" name="body_type" value="suv">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="contain">Truck
+                                <input type="checkbox" name="body_type" value="truck">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="contain">Sedan
+                                <input type="checkbox" name="body_type" value="sedan">
+                                <span class="checkmark"></span>
+                            </label>
+                            <!-- Added New Types -->
+                            <label class="contain">Pickup Truck
+                                <input type="checkbox" name="body_type" value="pickup truck">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="contain">Minivan
+                                <input type="checkbox" name="body_type" value="minivan">
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     </div>
-                </div><!--widget end-->
+                </div>
+                <div class="col-lg-12">
+                    <div class="form_boxes">
+                        <label>Make</label>
+                        <div class="drop-menu">
+                            <div class="select">
+                                <span>Any Make</span>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <input type="hidden" name="make">
+                            <ul class="dropdown" style="display: none;">
+                                <li id="ford">Ford</li>
+                                <li id="jeep">Jeep</li>
+                                <li id="acura">Acura</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form_boxes">
+                        <label>Model</label>
+                        <div class="drop-menu">
+                            <div class="select">
+                                <span>Any Model</span>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <input type="hidden" name="model">
+                            <ul class="dropdown" style="display: none;">
+                                <li id="f-150">F-150</li>
+                                <li id="cherokee">Cherokee</li>
+                                <li id="mdx">MDX</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form_boxes">
+                        <label>Min year</label>
+                        <div class="drop-menu">
+                            <div class="select">
+                                <span>Any Year</span>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <input type="hidden" name="min_year">
+                            <ul class="dropdown" style="display: none;">
+                                <li id="2015">2015</li>
+                                <li id="2016">2016</li>
+                                <li id="2017">2017</li>
+                                <li id="2018">2018</li>
+                                <li id="2019">2019</li>
+                                <li id="2020">2020</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form_boxes">
+                        <label>Max year</label>
+                        <div class="drop-menu">
+                            <div class="select">
+                                <span>Any Year</span>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <input type="hidden" name="max_year">
+                            <ul class="dropdown" style="display: none;">
+                                <li id="2020">2020</li>
+                                <li id="2019">2019</li>
+                                <li id="2018">2018</li>
+                                <li id="2017">2017</li>
+                                <li id="2016">2016</li>
+                                <li id="2015">2015</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Removed Mileage, Drive Type, Price, Colors, Doors, Cylinders, Key Features -->
+                <div class="col-lg-12">
+                    <div class="form_boxes">
+                        <label>Max Price</label>
+                        <div class="drop-menu">
+                            <div class="select">
+                                <span>Any Price</span>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <input type="hidden" name="max_price">
+                            <ul class="dropdown" style="display: none;">
+                                <li id="10000">$10,000</li>
+                                <li id="15000">$15,000</li>
+                                <li id="20000">$20,000</li>
+                                <li id="25000">$25,000</li>
+                                <li id="30000">$30,000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const filterElements = document.querySelectorAll('.inventory-sidebar .drop-menu');
+                        filterElements.forEach(function (filterElement) {
+                            const select = filterElement.querySelector('.select');
+                            const dropdown = filterElement.querySelector('.dropdown');
+                            const hiddenInput = filterElement.querySelector('input[type="hidden"]');
+
+                            if (select && dropdown && hiddenInput) {
+                                select.addEventListener('click', function () {
+                                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                                    select.querySelector('i').classList.toggle('fa-angle-up');
+                                    select.querySelector('i').classList.toggle('fa-angle-down');
+                                });
+
+                                dropdown.querySelectorAll('li').forEach(function (item) {
+                                    item.addEventListener('click', function () {
+                                        select.querySelector('span').textContent = item.textContent;
+                                        hiddenInput.value = item.id || item.textContent; // Use id if available, otherwise text content
+                                        dropdown.style.display = 'none';
+                                        select.querySelector('i').classList.remove('fa-angle-up');
+                                        select.querySelector('i').classList.add('fa-angle-down');
+                                    });
+                                });
+
+                                document.addEventListener('click', function (event) {
+                                    if (!filterElement.contains(event.target)) {
+                                        dropdown.style.display = 'none';
+                                        select.querySelector('i').classList.remove('fa-angle-up');
+                                        select.querySelector('i').classList.add('fa-angle-down');
+                                    }
+                                });
+                            }
+                        });
+
+                        // Handle checkbox filters
+                        document.querySelectorAll('.inventory-sidebar .cheak-box input[type="checkbox"]').forEach(function (checkbox) {
+                            checkbox.addEventListener('change', function () {
+                                // You can add logic here to filter results based on checked checkboxes
+                                console.log(`Checkbox ${this.name} with value ${this.value} is now ${this.checked ? 'checked' : 'unchecked'}`);
+                            });
+                        });
+                    });
+                </script>
             </div>
-        </div>
+        </div><!--widget end-->
+    </div>
+    </div>
 
     </div>
 
@@ -714,34 +715,21 @@
                     <li><a href="inventory-list-01.html#">Home</a></li>
                     <li><span>Cars for Sale</span></li>
                 </ul>
-                <h2>New and Used Cars For Sale</h2>
+                <h2>Used Vehicles for Sale</h2>
             </div>
             <div class="text-box">
                 <div class="text">Showing 1 to 16 of 1559 vehicles</div>
-                <form>
-                    <div class="form_boxes v3">
-                        <small>Sort by</small>
-                        <div class="drop-menu">
-                            <div class="select">
-                                <span>Any Makes</span>
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                            <input type="hidden" name="gender">
-                            <ul class="dropdown" style="display: none;">
-                                <li>Audi</li>
-                                <li>Honda</li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
+
             </div>
             <div class="row wow fadeInUp">
                 <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6" data-make="ford" data-model="f-150"
+                    data-year="2019" data-price="21999" data-mileage="196135" data-body="truck">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img src="images/firststopcars/car-1 ford/ford-1.jpg" alt="Ford Car"></a></figure>
-                            <span>Low Mileage</span>
+                            <figure class="image"><a href="products/ford.html"><img
+                                        src="images/firststopcars/car-1 ford/ford-1.jpg" alt="Ford Car"></a></figure>
+                            <span>Recommended</span>
                             <a class="icon-box">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
                                     fill="none">
@@ -759,17 +747,17 @@
                             </a>
                         </div>
                         <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Range Rover, Defender 110</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
+                            <h6 class="title"><a href="products/ford.html">2019 Ford F-150</a></h6>
+                            <div class="text">4x4 XLT 2019 Ford F-150</div>
                             <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
+                                <li><i class="flaticon-gasoline-pump"></i>196,135 kms</li>
+                                <li><i class="flaticon-speedometer"></i>Mileage</li>
                                 <li><i class="flaticon-gearbox"></i>Automatic</li>
                             </ul>
                             <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
+                                <span>$21,999</span>
+                                <small>$23,999</small>
+                                <a href="products/ford.html" class="details">View Details<svg
                                         xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
                                         fill="none">
                                         <g clip-path="url(#clip0_601_4346)">
@@ -789,10 +777,12 @@
                     </div>
                 </div>
                 <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6" data-make="jeep" data-model="cherokee"
+                    data-year="2017" data-price="13499" data-mileage="209000" data-body="suv">
                     <div class="inner-box">
                         <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img src="images/firststopcars/car-2 jeep/jeep-1.jpg" alt="Jeep Car"></a></figure>
+                            <figure class="image"><a href="products/jeep.html"><img
+                                        src="images/firststopcars/car-2 jeep/jeep-2.jpg" alt="Jeep Car"></a></figure>
                             <a class="icon-box">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
                                     fill="none">
@@ -810,17 +800,17 @@
                             </a>
                         </div>
                         <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Mercedes-Benz, C Class</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
+                            <h6 class="title"><a href="products/jeep.html">2017 Jeep Cherokee</a></h6>
+                            <div class="text">4x4 Trailhawk 2017 Jeep Cherokee</div>
                             <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
+                                <li><i class="flaticon-gasoline-pump"></i>209,000 kms</li>
+                                <li><i class="flaticon-speedometer"></i>Mileage</li>
                                 <li><i class="flaticon-gearbox"></i>Automatic</li>
                             </ul>
                             <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
+                                <span>$13,499</span>
+                                <small>$15,789</small>
+                                <a href="products/jeep.html" class="details">View Details<svg
                                         xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
                                         fill="none">
                                         <g clip-path="url(#clip0_601_4346)">
@@ -840,10 +830,12 @@
                     </div>
                 </div>
                 <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6" data-make="acura" data-model="mdx"
+                    data-year="2015" data-price="16999" data-mileage="171134" data-body="suv">
                     <div class="inner-box">
                         <div class="image-box two">
-                            <figure class="image"><a href="inventory-list-01.html#"><img src="images/firststopcars/car-3 Acura/acura-1.jpg" alt="Acura Car"></a></figure>
+                            <figure class="image"><a href="products/acura.html"><img
+                                        src="images/firststopcars/car-3 Acura/acura-1.jpg" alt="Acura Car"></a></figure>
                             <span>Great Price</span>
                             <a class="icon-box">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
@@ -862,17 +854,17 @@
                             </a>
                         </div>
                         <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">New Range Rover, Evoque</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
+                            <h6 class="title"><a href="products/acura.html">2015 Acura MDX</a></h6>
+                            <div class="text">Acura MDX</div>
                             <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
+                                <li><i class="flaticon-gasoline-pump"></i>171,134 kms</li>
+                                <li><i class="flaticon-speedometer"></i>Mileage</li>
                                 <li><i class="flaticon-gearbox"></i>Automatic</li>
                             </ul>
                             <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
+                                <span>$16,999</span>
+                                <small>$18,899</small>
+                                <a href="products/acura.html" class="details">View Details<svg
                                         xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
                                         fill="none">
                                         <g clip-path="url(#clip0_601_4346)">
@@ -891,474 +883,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img src="images/firststopcars/car-1 ford/ford-2.jpg" alt="Ford Car 2"></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Audi, Q5</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img src="images/firststopcars/car-2 jeep/jeep-2.jpg" alt="Jeep Car 2"></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Volkswagen, Tiguan</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box two">
-                            <figure class="image"><a href="inventory-list-01.html#"><img src="images/firststopcars/car-3 Acura/acura-2.jpg" alt="Acura Car 2"></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Honda, Accord</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img
-                                        src="images/resource/shop12-3.jpg" alt=""></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Volkswagen, CC</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img
-                                        src="images/resource/shop3-6.jpg" alt=""></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Hyundai, Exter</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img
-                                        src="images/resource/shop12-4.jpg" alt=""></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">BMW X1</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box two">
-                            <figure class="image"><a href="inventory-list-01.html#"><img
-                                        src="images/resource/shop12-5.jpg" alt=""></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Mercedes-Benz, GLA</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="vehicle-detail.html" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img
-                                        src="images/resource/shop12-6.jpg" alt=""></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">Mercedes-Benz, S Class</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="inventory-list-01.html#" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- car-block-four -->
-                <div class="car-block-four col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><a href="inventory-list-01.html#"><img
-                                        src="images/resource/shop12-7.jpg" alt=""></a></figure>
-                            <a class="icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                                    fill="none">
-                                    <g clip-path="url(#clip0_601_1274)">
-                                        <path
-                                            d="M9.39062 12C9.15156 12 8.91671 11.9312 8.71128 11.8009L6.11794 10.1543C6.04701 10.1091 5.95296 10.1096 5.88256 10.1543L3.28869 11.8009C2.8048 12.1082 2.13755 12.0368 1.72722 11.6454C1.47556 11.4047 1.33685 11.079 1.33685 10.728V1.2704C1.33738 0.570053 1.90743 0 2.60778 0H9.39272C10.0931 0 10.6631 0.570053 10.6631 1.2704V10.728C10.6631 11.4294 10.0925 12 9.39062 12ZM6.00025 9.06935C6.24193 9.06935 6.47783 9.13765 6.68169 9.26743L9.27503 10.9135C9.31233 10.9371 9.35069 10.9487 9.39114 10.9487C9.48046 10.9487 9.61286 10.8788 9.61286 10.728V1.2704C9.61233 1.14956 9.51356 1.05079 9.39272 1.05079H2.60778C2.48642 1.05079 2.38817 1.14956 2.38817 1.2704V10.728C2.38817 10.7911 2.41023 10.8436 2.45384 10.8851C2.52582 10.9539 2.63563 10.9708 2.72599 10.9135L5.31934 9.2669C5.52267 9.13765 5.75857 9.06935 6.00025 9.06935Z"
-                                            fill="black" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_601_1274">
-                                            <rect width="12" height="12" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="content-box">
-                            <h6 class="title"><a href="inventory-list-01.html#">BMW 6 Series</a></h6>
-                            <div class="text">2023 C300e AMG Line Night Ed Premiu...</div>
-                            <ul>
-                                <li><i class="flaticon-gasoline-pump"></i>72,925 KM</li>
-                                <li><i class="flaticon-speedometer"></i>Gasoline</li>
-                                <li><i class="flaticon-gearbox"></i>Automatic</li>
-                            </ul>
-                            <div class="btn-box">
-                                <span>$789</span>
-                                <small>$399</small>
-                                <a href="inventory-list-01.html#" class="details">View Details<svg
-                                        xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
-                                        <g clip-path="url(#clip0_601_4346)">
-                                            <path
-                                                d="M13.6109 0H5.05533C4.84037 0 4.66643 0.173943 4.66643 0.388901C4.66643 0.603859 4.84037 0.777802 5.05533 0.777802H12.6721L0.113697 13.3362C-0.0382246 13.4881 -0.0382246 13.7342 0.113697 13.8861C0.18964 13.962 0.289171 14 0.388666 14C0.488161 14 0.587656 13.962 0.663635 13.8861L13.222 1.3277V8.94447C13.222 9.15943 13.3959 9.33337 13.6109 9.33337C13.8259 9.33337 13.9998 9.15943 13.9998 8.94447V0.388901C13.9998 0.173943 13.8258 0 13.6109 0Z"
-                                                fill="#405FF2" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_601_4346">
-                                                <rect width="14" height="14" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="pagination-sec">
+                <!-- <div class="pagination-sec">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <li class="page-item">
@@ -1405,8 +931,8 @@
                     </ul>
                     <div class="text">Showing results 1-30 of 1,415</div>
                 </nav>
+            </div> -->
             </div>
-        </div>
     </section>
     <!-- End shop section two -->
 
@@ -1420,7 +946,7 @@
                         <div class="text">Receive pricing updates, shopping tips & more!</div>
                     </div>
                     <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
-                        <form method="post" action="contact.html#">
+                        <form method="post" action="index.html">
                             <div class="form-group">
                                 <input type="email" name="email" class="email" value=""
                                     placeholder="Your e-mail address" required="">
@@ -1435,96 +961,53 @@
         <div class="widgets-section">
             <div class="boxcar-container">
                 <div class="row">
-                    <!-- Footer COlumn -->
-                    <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp">
-                                    <h4 class="widget-title">Useful Links</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">About Us</a></li>
-                                            <!-- <li><a href="contact.html#">Careers</a></li> -->
-                                            <!-- <li><a href="contact.html#">Blog</a></li> -->
-                                            <!-- <li><a href="contact.html#">FAQs</a></li> -->
-                                            <!-- <li><a href="contact.html#">Finance</a></li>    -->
-                                            <li><a href="contact.html#">Contact Us</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                    <!-- Footer Column: Logo & Contact -->
+                    <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="footer-widget logo-widget wow fadeInUp">
+                            <div class="logo">
+                                <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
-                                    <h4 class="widget-title">Quick Links</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Get in Touch</a></li>
-                                            <li><a href="contact.html#">Help center</a></li>
-                                            <li><a href="contact.html#">Live chat</a></li>
-                                            <li><a href="contact.html#">How it works</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div> -->
-                            </div>
-                            <!-- <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="200ms">
-                                    <h4 class="widget-title">Our Brands</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Aston Martin</a></li>
-                                            <li><a href="contact.html#">Audi</a></li>
-                                            <li><a href="contact.html#">Bentley</a></li>
-                                            <li><a href="contact.html#">BMW</a></li>
-                                            <li><a href="contact.html#">Bugatti</a></li>
-                                            <li><a href="contact.html#">Ferrari</a></li>
-                                            <li><a href="contact.html#">Jaguar</a></li>
-                                            <li><a href="contact.html#">Lamborghini</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="300ms">
-                                    <h4 class="widget-title">Vehicles Type</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Pickup</a></li>
-                                            <li><a href="contact.html#">Coup</a></li>
-                                            <li><a href="contact.html#">Family MPV</a></li>
-                                            <li><a href="contact.html#">Sedan</a></li>
-                                            <li><a href="contact.html#">SUVs</a></li>
-                                            <li><a href="contact.html#">Sport Coupe</a></li>
-                                            <li><a href="contact.html#">Convertible</a></li>
-                                            <li><a href="contact.html#">Wagon</a></li>
-                                        </ul>
-                                    </div>
-                                </div> -->
+                            <div class="text">
+                                1234 Street Name, City, State, Zip Code<br>
+                                <a href="mailto:info@firststopmotors.com">info@firststopmotors.com</a><br>
+                                <a href="tel:+11234567890">+1 123 456 7890</a>
                             </div>
                         </div>
                     </div>
-                    <!-- footer column -->
-                    <div class="footer-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="400ms">
-                            <!-- <h4 class="widget-title">Vehicles Type</h4> -->
+
+                    <!-- Footer Column: Useful Links -->
+                    <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="footer-widget links-widget wow fadeInUp">
+                            <h4 class="widget-title">Useful Links</h4>
                             <div class="widget-content">
-                                <!-- <a href="contact.html#" class="store">
-                                    <img src="images/resource/apple.png">
-                                    <span>Download on the</span>
-                                    <h6 class="title">Apple Store</h6>
-                                </a>
-                                <a href="contact.html#" class="store two">
-                                    <img src="images/resource/play.png">
-                                    <span>Get in on</span>
-                                    <h6 class="title">Google Play</h6>
-                                </a> -->
+                                <ul class="user-links style-two">
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="inventory-list-01.html">Inventory</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="trade-in.html">Trade-In</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Column: Connect With Us & Hours -->
+                    <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                        <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="200ms">
+                            <h4 class="widget-title">Connect With Us</h4>
+                            <div class="widget-content">
                                 <div class="social-icons">
-                                    <h6 class="title">Connect With Us</h6>
                                     <ul>
-                                        <li><a href="contact.html#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="contact.html#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="contact.html#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="contact.html#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                     </ul>
+                                </div>
+                                <div class="text" style="margin-top: 20px;">
+                                    <h6 class="title" style="color:white; margin-bottom:10px;">Working Hours</h6>
+                                    Monday - Saturday: 10:00 AM - 06:00 PM<br>
+                                    Sunday: Closed
                                 </div>
                             </div>
                         </div>
@@ -1532,20 +1015,21 @@
                 </div>
             </div>
         </div>
-            <!--  Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="boxcar-container">
-                    <div class="inner-container">
-                        <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
-                        <div class="developed-by wow fadeInUp" style="margin-top:10px;color: white;">
-                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener" style="color: red;">BigInIT
-                                Technologies LLP</a>
-                        </div>
+        <!--  Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="boxcar-container">
+                <div class="inner-container">
+                    <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
+                    <div class="developed-by wow fadeInUp" style="margin-top:10px;color: white;">
+                        Developed by <a href="https://biginit.in" target="_blank" rel="noopener"
+                            style="color: red;">BigInIT
+                            Technologies LLP</a>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- End boxcar-footer -->
+        </div>
+    </footer>
+    <!-- End boxcar-footer -->
 
 
     </div><!-- End Page Wrapper -->
@@ -1569,38 +1053,264 @@
     <script src="js/mmenu.js"></script>
     <script src="js/rangle-slider.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/inventory-filter.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "left"; // Left align
+                    logoDiv.style.padding = "40px 0px 0px 0px"; // Top 40, Bottom 0
+                    logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+        });
+    </script>
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebar = document.querySelector(".wrap-fixed-sidebar");
+            if (sidebar && document.body) {
+                document.body.appendChild(sidebar);
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "center";
+                    logoDiv.style.display = "flex"; // Use Flexbox
+                    logoDiv.style.justifyContent = "center"; // Force Center
+                    logoDiv.style.alignItems = "center";
+                    logoDiv.style.padding = "70px 0px 20px 0px"; // Top 70, Bottom 20, No side padding
+                    logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; margin: 0 auto !important; display: block;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+
+            // REMOVE mm-wrapper_opening CLASS (User Request)
+            // This class manages the opening animation but user wants it gone
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === "class") {
+                        var target = mutation.target;
+                        if (target.classList.contains("mm-wrapper_opening")) {
+                            target.classList.remove("mm-wrapper_opening");
+                            // console.log("Removed mm-wrapper_opening from", target);
+                        }
+                    }
+                });
+            });
+
+            // Observe html and body and wrapper
+            observer.observe(document.documentElement, { attributes: true });
+            observer.observe(document.body, { attributes: true });
+            // Also check initial state
+            document.documentElement.classList.remove("mm-wrapper_opening");
+            document.body.classList.remove("mm-wrapper_opening");
+        });
+    </script>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebar = document.querySelector(".wrap-fixed-sidebar");
+            if (sidebar && document.body) {
+                document.body.appendChild(sidebar);
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "left";
+                    logoDiv.style.display = "flex"; // Use Flexbox
+                    logoDiv.style.justifyContent = "flex-start"; // Force Left
+                    logoDiv.style.alignItems = "center";
+                    logoDiv.style.padding = "70px 0px 20px 20px"; // Top 70, Bottom 20, Left 20
+                    logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+
+            // REMOVE mm-wrapper_opening CLASS (User Request)
+            // This class manages the opening animation but user wants it gone
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === "class") {
+                        var target = mutation.target;
+                        if (target.classList.contains("mm-wrapper_opening")) {
+                            target.classList.remove("mm-wrapper_opening");
+                            // console.log("Removed mm-wrapper_opening from", target);
+                        }
+                    }
+                });
+            });
+
+            // Observe html and body and wrapper
+            observer.observe(document.documentElement, { attributes: true });
+            observer.observe(document.body, { attributes: true });
+            // Also check initial state
+            document.documentElement.classList.remove("mm-wrapper_opening");
+            document.body.classList.remove("mm-wrapper_opening");
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebar = document.querySelector(".wrap-fixed-sidebar");
+            if (sidebar && document.body) {
+                document.body.appendChild(sidebar);
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "left";
+                    logoDiv.style.display = "flex"; // Use Flexbox
+                    logoDiv.style.justifyContent = "flex-start"; // Force Left
+                    logoDiv.style.alignItems = "center";
+                    logoDiv.style.padding = "70px 0px 20px 20px"; // Top 70, Bottom 20, Left 20
+                    logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+
+            // REMOVE mm-wrapper_opening CLASS (User Request)
+            // This class manages the opening animation but user wants it gone
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === "class") {
+                        var target = mutation.target;
+                        if (target.classList.contains("mm-wrapper_opening")) {
+                            target.classList.remove("mm-wrapper_opening");
+                            // console.log("Removed mm-wrapper_opening from", target);
+                        }
+                    }
+                });
+            });
+
+            // Observe html and body and wrapper
+            observer.observe(document.documentElement, { attributes: true });
+            observer.observe(document.body, { attributes: true });
+            // Also check initial state
+            document.documentElement.classList.remove("mm-wrapper_opening");
+            document.body.classList.remove("mm-wrapper_opening");
+        });
+    </script>
+
 </body>
 <script>
-// Hamburger menu logic
-const hamburger = document.getElementById('hamburger-menu');
-const mobileNav = document.getElementById('mobile-nav');
-const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-const mobileNavLinks = mobileNav.querySelectorAll('a');
+    // Hamburger menu logic
+    const hamburger = document.getElementById('hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
 
-function openMobileNav() {
-    mobileNav.classList.add('open');
-    mobileNavOverlay.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-function closeMobileNav() {
-    mobileNav.classList.remove('open');
-    mobileNavOverlay.style.display = 'none';
-    document.body.style.overflow = '';
-}
+    function openMobileNav() {
+        mobileNav.classList.add('open');
+        mobileNavOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+        mobileNav.classList.remove('open');
+        mobileNavOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
 
-hamburger.addEventListener('click', openMobileNav);
-hamburger.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') openMobileNav();
-});
-mobileNavOverlay.addEventListener('click', closeMobileNav);
-mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileNav));
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeMobileNav();
-});
-// Optional: close on resize to desktop
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 991) closeMobileNav();
-});
+    hamburger.addEventListener('click', openMobileNav);
+    hamburger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') openMobileNav();
+    });
+    mobileNavOverlay.addEventListener('click', closeMobileNav);
+    mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileNav));
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMobileNav();
+    });
+    // Optional: close on resize to desktop
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 991) closeMobileNav();
+    });
 </script>
 
 </html>

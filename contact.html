@@ -18,7 +18,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
     .boxcar-header .c-box {
         display: flex;
@@ -28,41 +61,242 @@
     }
 
     .boxcar-header .st-logo {
-        flex: 0 0 auto;
         display: flex;
         justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     .boxcar-header .st-logo img {
-        max-width: 180px;
+        max-width: 260px;
+        width: 100%;
         height: auto;
+        display: block;
+        margin: 0 auto;
     }
 
     .boxcar-header .nav-out-bar {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .boxcar-header .right-box {
+        width: 100%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
     }
 
-    @media (max-width: 1199px) {
+    .boxcar-header .right-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Navigation Spacing Fix */
+    .boxcar-header .main-menu .navigation>li,
+    .sticky-header .main-menu .navigation>li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+
+    /* Sticky Header Styling */
+    .sticky-header {
+        padding: 5px 50px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .sticky-header .main-menu .navigation>li>a {
+        color: #ffffff !important;
+    }
+
+    .sticky-header .logo img {
+        max-height: unset !important;
+        max-width: 260px !important;
+        height: auto !important;
+        width: 100%;
+    }
+
+    .sticky-header .nav-out-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    /* Mobile Navigation Styling */
+    .mobile-navigation {
+        display: none;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .mobile-navigation a {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Sidebar (Mobile Menu) Styling */
+    .mm-navbar__title {
+        display: none !important;
+    }
+
+    /* Hide "Menu" text */
+    .mm-logo-header img {
+        filter: brightness(0);
+    }
+
+    /* Make sidebar logo black */
+
+    /* Fix Dropdown Arrows Alignment (Inventory Filters) */
+    .drop-menu .select {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-right: 15px;
+    }
+
+    /* Fix Inventory Sidebar "More Filter" Overlap & Width */
+    .wrap-fixed-sidebar {
+        position: fixed !important;
+        /* Ensure fixed positioning */
+        z-index: 2147483647 !important;
+        /* MAX INT to ensure top-most */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        /* KEY FIX: Hide by default */
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .wrap-fixed-sidebar.active {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .widget-sidebar-filter {
+        width: 300px !important;
+        /* Further reduced from 320px */
+        max-width: 85vw !important;
+        right: auto !important;
+        left: 0 !important;
+        /* Move to Left to match Mobile Menu UI */
+        position: fixed !important;
+        z-index: 2147483647 !important;
+        background-color: #ffffff !important;
+        /* Ensure Opaque Background */
+        overflow-y: auto !important;
+        /* Ensure scrollable */
+    }
+
+    /* Sidebar Width Override - FURTHER REDUCED */
+    .mm-menu {
+        width: 65% !important;
+        max-width: 260px !important;
+        /* SIGNIFICANTLY REDUCED WIDTH */
+        background-color: #ffffff !important;
+        /* Fix Transparency */
+        z-index: 99999999 !important;
+        /* Fix Z-Index Overlap */
+    }
+
+    .mm-panels,
+    .mm-panel {
+        background-color: #ffffff !important;
+        /* Ensure Panels are White */
+    }
+
+    /* Reduce Navbar Gap (User Request) */
+    .mm-navbar {
+        height: auto !important;
+        min-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        line-height: normal !important;
+    }
+
+    /* RESPONSIVE LOGIC: Desktop ONLY above 1040px */
+    @media (min-width: 1041px) {
+
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: flex !important;
+        }
+
+        /* FORCE NAV CONTENT TO SHOW: Overrides theme hiding logic */
+        .boxcar-header .nav-out-bar .nav,
+        .sticky-header .nav-out-bar .nav {
+            display: block !important;
+        }
+
+        .boxcar-header .main-menu,
+        .sticky-header .main-menu {
+            display: block !important;
+        }
+
+        .mobile-navigation {
+            display: none !important;
+        }
+
+        .boxcar-header .st-logo img {
+            max-width: 260px;
+        }
+
+        /* Ensure right-box is visible on desktop */
+        .boxcar-header .right-box {
+            display: flex !important;
+        }
+    }
+
+    /* RESPONSIVE LOGIC: Mobile/Tablet at 1040px or less */
+    @media (max-width: 1040px) {
+        .boxcar-header .st-logo img {
+            max-width: 180px;
+        }
+
+        .sticky-header .logo img {
+            max-width: 180px !important;
+        }
+
+        /* Hide Desktop Nav */
+        .boxcar-header .nav-out-bar,
+        .sticky-header .nav-out-bar {
+            display: none !important;
+        }
+
+        /* FIX: Show Right Box BUT hide everything except Hamburger */
+        .boxcar-header .right-box {
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .boxcar-header .right-box>* {
+            display: none !important;
+        }
+
+        .boxcar-header .right-box>.mobile-navigation {
+            display: flex !important;
+            margin-left: auto !important;
+        }
+
+        /* Show Hamburger */
+        .mobile-navigation {
+            display: flex !important;
+        }
+
+        .sticky-header {
+            padding: 5px 20px !important;
+        }
+    }
+
+    @media (max-width: 575px) {
         .boxcar-header .st-logo img {
             max-width: 140px;
         }
 
-        .boxcar-header .nav-out-bar {
-            display: none;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .boxcar-header .st-logo img {
-            max-width: 120px;
+        .sticky-header .logo img {
+            max-width: 140px !important;
         }
     }
 </style>
@@ -101,10 +335,14 @@
                         <div class="right-box">
                             <div class="mobile-navigation">
                                 <a href="#nav-mobile" title="">
-                                    <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="22" height="2" fill="white" />
-                                        <rect y="9" width="22" height="2" fill="white" />
+                                        <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                     </svg>
                                 </a>
                             </div>
@@ -131,6 +369,128 @@
             <!-- End Header Search -->
 
             <div id="nav-mobile"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Sticky Header -->
+            <div class="sticky-header">
+                <div class="inner-container">
+                    <div class="c-box">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
+                        </div>
+                        <div class="nav-out-bar">
+                            <nav class="nav main-menu">
+                                <ul class="navigation" id="navbar">
+                                    <li><a href="index.html"><span>Home</span></a></li>
+                                    <li><a href="about.html"><span>About</span></a></li>
+                                    <li><a href="inventory-list-01.html"><span>Inventory</span></a></li>
+                                    <li><a href="trade-in.html"><span>Trade-In</span></a></li>
+                                    <li><a href="contact.html"><span>Contact</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Mobile Trigger for Sticky Header -->
+                        <div class="mobile-navigation">
+                            <a href="#nav-mobile" title="">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sticky Header -->
+
         </header>
         <!-- End header-section -->
 
@@ -148,12 +508,12 @@
                 <!-- End section title -->
 
                 <!-- map-sec -->
-                <div class="map-sec">
-                    <div style="width: 80%; display: flex; justify-content: center; align-items: center; margin-left: 10% ;margin-right: 10%;"
+                <div class="map-sec" style="margin-bottom: 60px;">
+                    <div style="width: 100%; display: block; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"
                         class="goole-iframe">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.709666487854!2d-106.66774629999999!3d52.303123899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53045de89d15d8c7%3A0x72955c818fc0c65e!2sFirst%20Stop%20Motors!5e0!3m2!1sen!2sin!4v1765350788099!5m2!1sen!2sin"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
@@ -171,36 +531,45 @@
                                         <p>Have questions about our vehicles or services? We're here to help! Fill out
                                             the form below and our team will get back to you as soon as possible.</p>
                                     </div>
-<form class="row" id="contactForm">
+                                    <form class="row" id="contactForm">
                                         <div class="col-lg-6">
                                             <div class="form_boxes">
                                                 <label>First Name</label>
-                                                <input type="text" name="entry.1346844783" placeholder="Name">
+                                                <input type="text" name="entry.1346844783" placeholder="First Name"
+                                                    class="form-control"
+                                                    style="background: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_boxes">
                                                 <label>Last Name</label>
-                                                <input type="text" name="entry.1692288772" placeholder="Last Name">
+                                                <input type="text" name="entry.1692288772" placeholder="Last Name"
+                                                    class="form-control"
+                                                    style="background: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_boxes">
                                                 <label>Email</label>
-                                                <input type="email" name="entry.1304696472" placeholder="mail@example.com">
+                                                <input type="email" name="entry.1304696472"
+                                                    placeholder="mail@example.com" class="form-control"
+                                                    style="background: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form_boxes">
                                                 <label>Phone</label>
-                                                <input type="tel" name="entry.1200229720" placeholder="+90 (XXX) XXX-XXXX">
+                                                <input type="tel" name="entry.1200229720"
+                                                    placeholder="+90 (XXX) XXX-XXXX" class="form-control"
+                                                    style="background: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px solid #eee;">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form_boxes v2">
                                                 <label>Comment</label>
-                                                <textarea name="entry.2119383553" placeholder="Enter Your Comment" required=""
-                                                    style="color:#000; width: 100%;"></textarea>
+                                                <textarea name="entry.2119383553" placeholder="Enter Your Comment"
+                                                    required="" class="form-control"
+                                                    style="color:#000; width: 100%; background: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px solid #eee; min-height: 150px;"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-submit">
@@ -213,79 +582,97 @@
                             </div>
                             <!-- contact-column -->
                             <div class="contact-column col-lg-6 col-md-12 col-sm-12">
-                                <div class="inner-column">
+                                <div class="inner-column"
+                                    style="padding: 40px; background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid #eee;">
                                     <div class="boxcar-title">
-                                        <h6 class="title">Contact details</h6>
+                                        <h3 class="title"
+                                            style="font-weight: 700; color: #050B20; font-size: 28px; margin-bottom: 20px;">
+                                            Contact details</h3>
                                         <div class="text">Get in touch with First Stop Motors. We're here to help you
                                             find your perfect vehicle.</div>
                                     </div>
                                     <div class="content-box">
-                                        <h6 class="title">
-                                            <span class="icon">
-                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        <h6 class="title"
+                                            style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; margin-bottom: 5px;">
+                                            <span class="icon"
+                                                style="display: flex; align-items: center; justify-content: center; width: 30px;">
+                                                <svg width="24" height="24" viewBox="0 0 26 26" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M12.9999 4.0625C8.67871 4.0625 5.14575 7.64734 5.14575 12.1068C5.14575 14.3555 6.04517 16.8458 7.5169 18.7689C8.99243 20.697 10.9454 21.9375 12.9999 21.9375C15.0545 21.9375 17.0074 20.697 18.483 18.7689C19.9547 16.8458 20.8541 14.3555 20.8541 12.1068C20.8541 7.64734 17.3211 4.0625 12.9999 4.0625ZM3.52075 12.1068C3.52075 6.78329 7.74819 2.4375 12.9999 2.4375C18.2516 2.4375 22.4791 6.78329 22.4791 12.1068C22.4791 14.7496 21.4384 17.5809 19.7735 19.7564C18.1123 21.9271 15.7319 23.5625 12.9999 23.5625C10.268 23.5625 7.8876 21.9271 6.22642 19.7564C4.56143 17.5809 3.52075 14.7496 3.52075 12.1068Z"
-                                                        fill="#050B20" />
+                                                        fill="#405FF2" />
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M9.479 11.375C9.479 9.4305 11.0554 7.85417 12.9998 7.85417C14.9443 7.85417 16.5207 9.4305 16.5207 11.375C16.5207 13.3195 14.9443 14.8958 12.9998 14.8958C11.0554 14.8958 9.479 13.3195 9.479 11.375ZM12.9998 9.47917C11.9528 9.47917 11.104 10.328 11.104 11.375C11.104 12.422 11.9528 13.2708 12.9998 13.2708C14.0469 13.2708 14.8957 12.422 14.8957 11.375C14.8957 10.328 14.0469 9.47917 12.9998 9.47917Z"
-                                                        fill="#E1E1E1" />
+                                                        fill="#405FF2" />
                                                 </svg>
                                             </span>
                                             Address
                                         </h6>
-                                        <div class="text">121 9th St N, Unit #2<br>Martensville S0K2T2</div>
+                                        <div class="text" style="color: #666; font-size: 15px; margin-left: 40px;">121
+                                            9th St N, Unit #2<br>Martensville S0K2T2</div>
                                     </div>
-                                    <div class="content-box">
-                                        <h6 class="title">
-                                            <span class="icon">
-                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                    <div class="content-box" style="margin-bottom: 30px;">
+                                        <h6 class="title"
+                                            style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; margin-bottom: 5px;">
+                                            <span class="icon"
+                                                style="display: flex; align-items: center; justify-content: center; width: 30px;">
+                                                <svg width="24" height="24" viewBox="0 0 26 26" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M12.7584 14.5869C12.0336 14.5869 11.3111 14.3474 10.7065 13.8686L5.84779 9.95128C5.49787 9.66962 5.44371 9.1572 5.72429 8.80837C6.00704 8.46062 6.51837 8.40537 6.86721 8.68595L11.7216 12.5989C12.3316 13.0821 13.1906 13.0821 13.8049 12.5946L18.6106 8.68812C18.9594 8.4032 19.4707 8.45737 19.7546 8.8062C20.0373 9.15395 19.9842 9.66528 19.6365 9.94912L14.8221 13.8621C14.2133 14.3453 13.4853 14.5869 12.7584 14.5869Z"
-                                                        fill="#E1E1E1" />
+                                                        fill="#405FF2" />
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M18.0472 21.6667C18.0493 21.6645 18.058 21.6667 18.0645 21.6667C19.3006 21.6667 20.3969 21.2247 21.2376 20.3851C22.2137 19.4133 22.7499 18.0169 22.7499 16.4537V9.01333C22.7499 5.98758 20.7718 3.79166 18.0472 3.79166H7.411C4.68642 3.79166 2.70825 5.98758 2.70825 9.01333V16.4537C2.70825 18.0169 3.24558 19.4133 4.22058 20.3851C5.06125 21.2247 6.15867 21.6667 7.39367 21.6667H18.0472ZM7.39042 23.2917C5.71883 23.2917 4.226 22.685 3.07334 21.5367C1.78959 20.2562 1.08325 18.4513 1.08325 16.4537V9.01333C1.08325 5.11008 3.8035 2.16666 7.411 2.16666H18.0472C21.6547 2.16666 24.3749 5.11008 24.3749 9.01333V16.4537C24.3749 18.4513 23.6686 20.2562 22.3848 21.5367C21.2333 22.6839 19.7393 23.2917 18.0645 23.2917H7.39042Z"
-                                                        fill="#050B20" />
+                                                        fill="#405FF2" />
                                                 </svg>
                                             </span>
                                             Email
                                         </h6>
-                                        <div class="text"><a href="mailto:Firststopmotors306@gmail.com"
+                                        <div class="text" style="color: #666; font-size: 15px; margin-left: 40px;"><a
+                                                href="mailto:Firststopmotors306@gmail.com"
                                                 style="color: inherit; text-decoration: none;">Firststopmotors306@gmail.com</a>
                                         </div>
                                     </div>
                                     <div class="content-box">
-                                        <h6 class="title">
-                                            <span class="icon">
-                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        <h6 class="title"
+                                            style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; margin-bottom: 5px;">
+                                            <span class="icon"
+                                                style="display: flex; align-items: center; justify-content: center; width: 30px;">
+                                                <svg width="24" height="24" viewBox="0 0 26 26" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M23.5126 10.9886C23.1042 10.9886 22.7532 10.682 22.7066 10.2671C22.2949 6.60979 19.4533 3.77145 15.796 3.3652C15.3507 3.31537 15.029 2.91454 15.0788 2.4682C15.1276 2.02295 15.5273 1.69037 15.9758 1.75103C20.3926 2.2407 23.8246 5.66837 24.3207 10.0851C24.3717 10.5315 24.0499 10.9333 23.6047 10.9832C23.5743 10.9864 23.5429 10.9886 23.5126 10.9886Z"
-                                                        fill="#E1E1E1" />
+                                                        fill="#405FF2" />
                                                     <path
                                                         d="M19.676 11.0003C19.2947 11.0003 18.9556 10.7316 18.8798 10.3438C18.5678 8.74044 17.3317 7.50436 15.7305 7.19344C15.2896 7.10786 15.0025 6.68211 15.0881 6.24119C15.1737 5.80027 15.6103 5.51319 16.0403 5.59877C18.2948 6.03644 20.0357 7.77628 20.4744 10.0318C20.56 10.4738 20.2729 10.8995 19.8331 10.9851C19.78 10.9949 19.728 11.0003 19.676 11.0003Z"
-                                                        fill="#E1E1E1" />
+                                                        fill="#405FF2" />
                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M8.10554 17.8102C13.2113 22.9171 16.6108 24.2561 18.758 24.2561C19.8175 24.2561 20.5737 23.93 21.0774 23.5681C21.1002 23.5551 23.4315 22.1295 23.8399 19.9715C24.0328 18.9586 23.7511 17.9565 23.0274 17.0725C20.0461 13.4531 18.5273 13.7911 16.8503 14.6068C15.82 15.1116 15.0064 15.5038 12.7087 13.2082C10.4122 10.9108 10.8084 10.0971 11.3099 9.06703C12.1267 7.39003 12.4628 5.87083 8.84221 2.88733C7.96038 2.16692 6.96479 1.88525 5.95296 2.07483C3.82638 2.47242 2.39421 4.76583 2.39421 4.76583C1.25454 6.36592 0.481047 10.1868 8.10554 17.8102ZM6.28446 3.66517C6.37979 3.65 6.47404 3.64133 6.56721 3.64133C6.99188 3.64133 7.40138 3.80708 7.80979 4.14292C10.7294 6.54789 10.36 7.30624 9.84864 8.35598C9.08055 9.93439 8.67863 11.4749 11.5593 14.3576C14.4431 17.2404 15.9847 16.8385 17.5609 16.0682L17.5635 16.0669C18.612 15.5573 19.37 15.1889 21.7718 18.1049C22.1824 18.6054 22.3395 19.1059 22.2507 19.6335C22.0459 20.8468 20.6354 21.9334 20.2086 22.1977C18.68 23.2876 14.9999 22.4068 9.25388 16.6619C3.51004 10.917 2.62821 7.23692 3.75704 5.64983C3.98238 5.28258 5.07329 3.86992 6.28446 3.66517Z"
-                                                        fill="#050B20" />
+                                                        fill="#405FF2" />
                                                 </svg>
 
                                             </span>
                                             Phone
                                         </h6>
-                                        <div class="text"><a href="tel:+13062808015"
+                                        <div class="text" style="color: #666; font-size: 15px; margin-left: 40px;"><a
+                                                href="tel:+13062808015"
                                                 style="color: inherit; text-decoration: none;">+1 306-280-8015</a></div>
                                     </div>
-                                    <div class="social-icons">
-                                        <h6 class="title">Follow us</h6>
-                                        <ul class="social-links">
+                                    <div class="social-icons" style="margin-top: 30px;">
+                                        <h6 class="title"
+                                            style="font-size: 16px; font-weight: 600; margin-bottom: 15px;">Follow us
+                                        </h6>
+                                        <ul class="social-links" style="display: flex; gap: 15px;">
                                             <!-- <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li> -->
                                             <!-- <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li> -->
                                             <li><a href="https://www.instagram.com/firststop.motors?igsh=MWxodWVzbWM5MWtwZw=="
-                                                    target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                                    target="_blank"
+                                                    style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: #405FF2; border-radius: 50%; color: #fff; font-size: 24px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(64, 95, 242, 0.3);"><i
+                                                        class="fab fa-instagram"></i></a></li>
                                             <li><a href="https://maps.app.goo.gl/KC6R3z8C4bBt7qdG8?g_st=ic"
-                                                    target="_blank"><i class="fa-brands fa-google"></i></a></li>
+                                                    target="_blank"
+                                                    style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: #405FF2; border-radius: 50%; color: #fff; font-size: 24px; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(64, 95, 242, 0.3);"><i
+                                                        class="fas fa-map-marker-alt"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -309,7 +696,7 @@
                             <div class="text">Receive pricing updates, shopping tips & more!</div>
                         </div>
                         <div class="subscribe-form wow fadeInUp" data-wow-delay="100ms">
-                            <form method="post" action="contact.html#">
+                            <form method="post" action="index.html">
                                 <div class="form-group">
                                     <input type="email" name="email" class="email" value=""
                                         placeholder="Your e-mail address" required="">
@@ -324,96 +711,53 @@
             <div class="widgets-section">
                 <div class="boxcar-container">
                     <div class="row">
-                        <!-- Footer COlumn -->
-                        <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <div class="footer-widget links-widget wow fadeInUp">
-                                        <h4 class="widget-title">Useful Links</h4>
-                                        <div class="widget-content">
-                                            <ul class="user-links style-two">
-                                                <li><a href="contact.html#">About Us</a></li>
-                                                <!-- <li><a href="contact.html#">Careers</a></li> -->
-                                                <!-- <li><a href="contact.html#">Blog</a></li> -->
-                                                <!-- <li><a href="contact.html#">FAQs</a></li> -->
-                                                <!-- <li><a href="contact.html#">Finance</a></li>    -->
-                                                <li><a href="contact.html#">Contact Us</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                        <!-- Footer Column: Logo & Contact -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget logo-widget wow fadeInUp">
+                                <div class="logo">
+                                    <a href="index.html"><img src="images/logo.svg" alt="First Stop Motors"></a>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
-                                    <h4 class="widget-title">Quick Links</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Get in Touch</a></li>
-                                            <li><a href="contact.html#">Help center</a></li>
-                                            <li><a href="contact.html#">Live chat</a></li>
-                                            <li><a href="contact.html#">How it works</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div> -->
-                                </div>
-                                <!-- <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="200ms">
-                                    <h4 class="widget-title">Our Brands</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Aston Martin</a></li>
-                                            <li><a href="contact.html#">Audi</a></li>
-                                            <li><a href="contact.html#">Bentley</a></li>
-                                            <li><a href="contact.html#">BMW</a></li>
-                                            <li><a href="contact.html#">Bugatti</a></li>
-                                            <li><a href="contact.html#">Ferrari</a></li>
-                                            <li><a href="contact.html#">Jaguar</a></li>
-                                            <li><a href="contact.html#">Lamborghini</a></li>
-                                        </ul>                                
-                                    </div>
-                                </div>
-                            </div> -->
-                                <div class="col-lg-3 col-md-6 col-sm-12">
-                                    <!-- <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="300ms">
-                                    <h4 class="widget-title">Vehicles Type</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="contact.html#">Pickup</a></li>
-                                            <li><a href="contact.html#">Coup</a></li>
-                                            <li><a href="contact.html#">Family MPV</a></li>
-                                            <li><a href="contact.html#">Sedan</a></li>
-                                            <li><a href="contact.html#">SUVs</a></li>
-                                            <li><a href="contact.html#">Sport Coupe</a></li>
-                                            <li><a href="contact.html#">Convertible</a></li>
-                                            <li><a href="contact.html#">Wagon</a></li>
-                                        </ul>
-                                    </div>
-                                </div> -->
+                                <div class="text">
+                                    1234 Street Name, City, State, Zip Code<br>
+                                    <a href="mailto:info@firststopmotors.com">info@firststopmotors.com</a><br>
+                                    <a href="tel:+11234567890">+1 123 456 7890</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- footer column -->
-                        <div class="footer-column col-lg-3 col-md-6 col-sm-12">
-                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="400ms">
-                                <!-- <h4 class="widget-title">Vehicles Type</h4> -->
+
+                        <!-- Footer Column: Useful Links -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget links-widget wow fadeInUp">
+                                <h4 class="widget-title">Useful Links</h4>
                                 <div class="widget-content">
-                                    <!-- <a href="contact.html#" class="store">
-                                    <img src="images/resource/apple.png">
-                                    <span>Download on the</span>
-                                    <h6 class="title">Apple Store</h6>
-                                </a>
-                                <a href="contact.html#" class="store two">
-                                    <img src="images/resource/play.png">
-                                    <span>Get in on</span>
-                                    <h6 class="title">Google Play</h6>
-                                </a> -->
+                                    <ul class="user-links style-two">
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="inventory-list-01.html">Inventory</a></li>
+                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="trade-in.html">Trade-In</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column: Connect With Us & Hours -->
+                        <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="footer-widget social-widget wow fadeInUp" data-wow-delay="200ms">
+                                <h4 class="widget-title">Connect With Us</h4>
+                                <div class="widget-content">
                                     <div class="social-icons">
-                                        <h6 class="title">Connect With Us</h6>
                                         <ul>
-                                            <li><a href="contact.html#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="contact.html#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="contact.html#"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="contact.html#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                         </ul>
+                                    </div>
+                                    <div class="text" style="margin-top: 20px;">
+                                        <h6 class="title" style="color:white; margin-bottom:10px;">Working Hours</h6>
+                                        Monday - Saturday: 10:00 AM - 06:00 PM<br>
+                                        Sunday: Closed
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +771,8 @@
                     <div class="inner-container">
                         <div class="copyright-text wow fadeInUp">© 2026 FIRST STOP MOTORS. All rights reserved.</div>
                         <div class="developed-by wow fadeInUp" style="margin-top:10px;color: white;">
-                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener" style="color: red;">BigInIT
+                            Developed by <a href="https://biginit.in" target="_blank" rel="noopener"
+                                style="color: red;">BigInIT
                                 Technologies LLP</a>
                         </div>
                     </div>
@@ -440,26 +785,26 @@
 
     <!-- Scroll To Top -->
     <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // STOP page redirect
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // STOP page redirect
 
-    const formData = new FormData(this);
+            const formData = new FormData(this);
 
-    fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScmcd_jGSCBDFdLGLnut17JBkJA4x72ltoB95_gnK7ZjCXWxQ/formResponse", {
-        method: "POST",
-        body: formData,
-        mode: "no-cors" // REQUIRED for Google Forms
-    })
-    .then(() => {
-        alert("✅ Your message has been submitted successfully!");
-        this.reset();
-    })
-    .catch(() => {
-        alert("❌ Something went wrong. Please try again.");
-    });
-});
-</script>
+            fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScmcd_jGSCBDFdLGLnut17JBkJA4x72ltoB95_gnK7ZjCXWxQ/formResponse", {
+                method: "POST",
+                body: formData,
+                mode: "no-cors" // REQUIRED for Google Forms
+            })
+                .then(() => {
+                    alert("✅ Your message has been submitted successfully!");
+                    this.reset();
+                })
+                .catch(() => {
+                    alert("❌ Something went wrong. Please try again.");
+                });
+        });
+    </script>
 
     <script src="js/jquery.js"></script>
     <script src="js/popper.min.js"></script>
@@ -473,6 +818,154 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     <script src="js/knob.js"></script>
     <script src="js/mmenu.js"></script>
     <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebar = document.querySelector(".wrap-fixed-sidebar");
+            if (sidebar && document.body) {
+                document.body.appendChild(sidebar);
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Wait for mmenu to initialize
+            setTimeout(function () {
+                var mmenu = document.querySelector(".mm-menu");
+                if (mmenu && !mmenu.querySelector(".mm-logo-header")) {
+                    var logoDiv = document.createElement("div");
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.className = "mm-logo-header";
+                    logoDiv.style.textAlign = "left";
+                    logoDiv.style.display = "flex"; // Use Flexbox
+                    logoDiv.style.justifyContent = "flex-start"; // Force Left
+                    logoDiv.style.alignItems = "center";
+                    logoDiv.style.padding = "40px 0px 20px 0px"; // Top 70, Bottom 20, Left 20
+                    logoDiv.innerHTML = '<img src="images/logo.svg" style="max-width: 180px; height: auto; display: block;" alt="Logo">';
+                    // Insert at the top of the menu panel
+                    var panel = mmenu.querySelector(".mm-panel");
+                    if (panel) {
+                        panel.insertBefore(logoDiv, panel.firstChild);
+                    }
+                }
+            }, 1000); // Delay to ensure mmenu is ready
+
+            // REMOVE mm-wrapper_opening CLASS (User Request)
+            // This class manages the opening animation but user wants it gone
+            var observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === "class") {
+                        var target = mutation.target;
+                        if (target.classList.contains("mm-wrapper_opening")) {
+                            target.classList.remove("mm-wrapper_opening");
+                            // console.log("Removed mm-wrapper_opening from", target);
+                        }
+                    }
+                });
+            });
+
+            // Observe html and body and wrapper
+            observer.observe(document.documentElement, { attributes: true });
+            observer.observe(document.body, { attributes: true });
+            // Also check initial state
+            document.documentElement.classList.remove("mm-wrapper_opening");
+            document.body.classList.remove("mm-wrapper_opening");
+        });
+    </script>
+
 </body>
 
 </html>

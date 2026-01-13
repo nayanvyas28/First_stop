@@ -10,25 +10,30 @@
   font-size: 1rem;
   border: none;
   border-radius: 2em;
-  box-shadow: 0 2px 8px rgba(64,95,242,0.10);
+  box-shadow: 0 2px 8px rgba(64, 95, 242, 0.10);
   transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
   text-decoration: none;
   position: relative;
   overflow: hidden;
 }
+
 .btn-view-details svg {
   margin-left: 0.5em;
   transition: transform 0.2s;
 }
-.btn-view-details:hover, .btn-view-details:focus {
+
+.btn-view-details:hover,
+.btn-view-details:focus {
   background: linear-gradient(90deg, #2B3A67 0%, #405FF2 100%);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(64,95,242,0.18);
+  box-shadow: 0 4px 16px rgba(64, 95, 242, 0.18);
   transform: translateY(-2px) scale(1.03);
 }
+
 .btn-view-details:hover svg {
   transform: translateX(4px) scale(1.1);
 }
+
 /* Prevent overlap of title with sidebar filter */
 
 /* Boxcar | Boxcar HTML Template
@@ -75,25 +80,35 @@ License: copyright commercial
 
 :root {
   /* === Updated Theme Colors === */
-  --theme-color-light: #FFFFFF;        /* White */
-  --theme-color-dark: #000000;         /* Black */
-  --theme-color-gray: #F6F6F6;         /* Keeping light gray for UI spacing if needed */
+  --theme-color-light: #FFFFFF;
+  /* White */
+  --theme-color-dark: #000000;
+  /* Black */
+  --theme-color-gray: #F6F6F6;
+  /* Keeping light gray for UI spacing if needed */
 
-  --theme-color1: #D32F2F;             /* Primary Red */
-  --theme-color2: #212121;             /* Charcoal */
-  --theme-color3: #FFFFFF;             /* White */
+  --theme-color1: #D32F2F;
+  /* Primary Red */
+  --theme-color2: #212121;
+  /* Charcoal */
+  --theme-color3: #FFFFFF;
+  /* White */
 
   --bg-theme-color1: var(--theme-color1);
   --bg-theme-color2: var(--theme-color2);
   --bg-theme-color3: var(--theme-color3);
 
   /* === Text Colors === */
-  --text-color: #212121;               /* Charcoal for primary text */
-  --text-color2: #000000;              /* Black for stronger text */
-  --headings-color: #212121;           /* Charcoal headings */
+  --text-color: #212121;
+  /* Charcoal for primary text */
+  --text-color2: #000000;
+  /* Black for stronger text */
+  --headings-color: #212121;
+  /* Charcoal headings */
 
   --link-color: var(--headings-color);
-  --link-hover-color: var(--theme-color1); /* Red hover for emphasis */
+  --link-hover-color: var(--theme-color1);
+  /* Red hover for emphasis */
 
   /* === Typography === */
   --title-font: "DM Sans", sans-serif;
@@ -135,9 +150,11 @@ License: copyright commercial
   --sec-title-font-weight: var(--h2-font-weight);
 
   /* === UI Backgrounds === */
-  --theme-light-background: #FFFFFF;   /* Clean white backgrounds */
+  --theme-light-background: #FFFFFF;
+  /* Clean white backgrounds */
   --theme-light-background-text-color: var(--headings-color);
-  --theme-black: #000000;              /* Full black option */
+  --theme-black: #000000;
+  /* Full black option */
 
   /* === Layout Sizes === */
   --container-width: 1430px;
@@ -30294,4 +30311,321 @@ li.nav-sub.mm-listitem .mm-listitem__btn {
 #slider-range-value01::after,
 #slider-range-value1::after {
   margin: 0 2px;
+}
+
+/* FIX: Sidebar Overlap Issue */
+.wrap-fixed-sidebar {
+  z-index: 99999 !important;
+}
+
+.wrap-fixed-sidebar.active {
+  display: block !important;
+}
+
+.boxcar-header {
+  z-index: 100 !important;
+}
+
+.inventory-sidebar {
+  background-color: #fff;
+  z-index: 100000;
+}
+
+/* FIX: Inventory Form Layout - Align Search Button Right */
+.inventory-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inventory-form .form-submit {
+  margin-left: auto;
+}
+
+/* FIX: Gallery Image Layout and View More Overlay */
+.inventory-section .gallery-sec .image-column .image,
+.inventory-section .gallery-sec .image-column-two .image {
+  height: 100%;
+  position: relative;
+  border-radius: 12px;
+  /* Increased radius for premium look */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  /* Soft shadow */
+}
+
+.inventory-section .gallery-sec .image-column img,
+.inventory-section .gallery-sec .image-column-two img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+}
+
+.inventory-section .gallery-sec .image-column:hover img,
+.inventory-section .gallery-sec .image-column-two:hover img {
+  transform: scale(1.02);
+  /* Subtle zoom effect on hover */
+}
+
+/* Ensure inner-column and figure don't restrict image fill */
+.inventory-section .gallery-sec .inner-column {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.inventory-section .gallery-sec .image-box figure {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix: Anchor tag must be block to fill figure */
+.inventory-section .gallery-sec .image-box figure a {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+}
+
+.inventory-section .gallery-sec .image-column .image-box {
+  width: 100%;
+  height: 480px;
+  margin-bottom: 0;
+}
+
+.inventory-section .gallery-sec .image-column-two .inner-column .image-box {
+  display: block;
+  width: 100%;
+  /* User Request: Ensure full fill */
+  height: 230px;
+  margin-bottom: 20px;
+}
+
+/* Mobile Responsiveness: Ensure gaps between stacked images */
+@media only screen and (max-width: 767px) {
+
+  .inventory-section .gallery-sec .image-column .image-box,
+  .inventory-section .gallery-sec .image-column-two .image-box {
+    margin-bottom: 20px !important;
+    height: auto !important;
+    min-height: 200px;
+    /* Ensure visibility */
+  }
+
+  .inventory-section .gallery-sec .image-column {
+    margin-bottom: 20px;
+  }
+}
+
+.inventory-section .gallery-sec .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.inventory-section .gallery-sec .col-lg-7,
+.inventory-section .gallery-sec .col-lg-5,
+.inventory-section .gallery-sec .col-6 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.view-more-link {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.view-more-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Lighter, premium overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  backdrop-filter: blur(2px);
+  /* Glassmorphism touch */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Ensure Fancybox is on top */
+.fancybox-container {
+  z-index: 200000 !important;
+}
+
+/* Premium Button for Blog Section - "Get Started" & "Sell Car" */
+.blog-blockt-three .inner-box .content-box .read-more {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: #050B20 !important;
+  /* Force Dark premium background */
+  color: #ffffff !important;
+  padding: 14px 32px;
+  border-radius: 50px;
+  /* Full pill shape */
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+  width: auto;
+  min-width: 140px;
+  /* Ensure generic width */
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative;
+  z-index: 10;
+  white-space: nowrap;
+  /* Prevent wrapping */
+  margin-top: 10px;
+  /* Add spacing if needed */
+}
+
+.blog-blockt-three .inner-box .content-box .read-more:hover {
+  background-color: #405FF2 !important;
+  /* Theme Blue on Hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(64, 95, 242, 0.25);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+}
+
+.blog-blockt-three .inner-box .content-box .read-more svg {
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  fill: #ffffff;
+  display: inline-block;
+  /* Ensure it stays inline */
+  vertical-align: middle;
+}
+
+.blog-blockt-three .inner-box .content-box .read-more:hover svg {
+  transform: translateX(5px);
+}
+
+/* Ensure inner SVG paths are white */
+.blog-blockt-three .inner-box .content-box .read-more svg path {
+  fill: #ffffff !important;
+}
+
+/* Footer Restoration Fixes & UI Enhancements */
+.footer-widget .logo img {
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin-bottom: 25px;
+}
+
+/* Address/Contact Text - Lighten color for visibility */
+.footer-widget .text {
+  color: #cecece !important;
+  /* Light gray */
+  line-height: 28px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-widget .text a {
+  color: #cecece !important;
+  transition: all 0.3s ease;
+}
+
+.footer-widget .text a:hover {
+  color: #405FF2 !important;
+  /* Theme Blue */
+}
+
+/* Social Icons - High Visibility & Premium Style */
+.footer-widget .social-icons ul {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* Ensure no wrapping issues */
+  padding: 0;
+  margin: 0 !important;
+  /* Force 0 margin */
+  gap: 10px;
+  /* Consistent spacing */
+  left: 0;
+  /* Reset any positioning */
+}
+
+.footer-widget .social-icons ul li {
+  margin-right: 0;
+  list-style: none;
+  display: inline-block;
+  margin-left: 0px !important;
+  /* User request: Fix margin left */
+}
+
+.footer-widget .social-icons ul li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff !important;
+  /* Force Bright background */
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+/* Explicitly target the icon to force color - AGGRESSIVE FIX */
+.footer-widget .social-icons ul li a i,
+.footer-widget .social-icons ul li a svg,
+.footer-widget .social-icons ul li a span {
+  color: #050B20 !important;
+  /* Dark Black/Blue */
+  fill: #050B20 !important;
+  font-size: 16px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  line-height: inherit !important;
+  display: inline-block !important;
+}
+
+.footer-widget .social-icons ul li a:hover {
+  background-color: #405FF2 !important;
+  /* Theme Blue */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(64, 95, 242, 0.3);
+}
+
+.footer-widget .social-icons ul li a:hover i,
+.footer-widget .social-icons ul li a:hover svg {
+  color: #ffffff !important;
+  /* White on hover */
+  fill: #ffffff !important;
+}
+
+/* Working Hours Header */
+.footer-widget .title {
+  color: #ffffff !important;
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
 }
